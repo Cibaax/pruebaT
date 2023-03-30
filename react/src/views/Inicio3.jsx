@@ -30,14 +30,14 @@ const [loading, setLoading] = useState(false)
                             <div className="timeline">
                                 {/* timeline time label */}
                                 <div className="time-label">
-                                    <span className="bg-info">27 Marzo 2023</span>
+                                    <span className="bg-info">30 Marzo 2023</span>
                                 </div>
                                 {/* /.timeline-label */}
                                 {/* timeline item */}
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />15:09</span>
+                                        <span className="time font-weight-bold">Finalizado 30/03/2023  <i className="fas fa-clock" />11:09</span>
                                         <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
                                         <div className="timeline-body bg-green">
                                             Se ha registrado la información de la empresa con éxito
@@ -53,7 +53,7 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                    <span className="time font-weight-bold">Finalizado 30/03/2023  <i className="fas fa-clock" />11:42</span>
                                         <h3 className="timeline-header font-weight-bold">Preparación - Paso #1</h3>
                                         <div className="timeline-body bg-green">
                                             Carga del acta de asignación de líderes del PESV realizada con éxito.
