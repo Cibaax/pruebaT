@@ -22,10 +22,10 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
+        $user->rols()->attach(1);
+        //$token = $user->createToken('main')->plainTextToken;
         
-        $token = $user->createToken('main')->plainTextToken;
-        
-        return response(compact('user', 'token'));
+        return response(compact('user'));
     }
     
     public function login(LoginRequest $request)

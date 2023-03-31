@@ -23,8 +23,8 @@ export default function Signup() {
         }
         axiosClient.post('/signup', payload)
         .then(({data}) => {
-            setUser(data.user)
-            setToken(data.token)
+            setUser(data.user);
+            window.location = '/login';
         })
         .catch(err => {
             const response = err.response;
@@ -35,27 +35,65 @@ export default function Signup() {
     }
 
     return (
-        <div className="login-signup-form animated fadeInDown">
-            <div className="form">
-                <form onSubmit={onSubmit}>
-                    <h1 className="title">
-                        Signup for free
-                    </h1>
-                    {errors && <div className="alert">
-                            {Object.keys(errors).map(key => (
-                                <p key={key}>{errors[key][0]}</p>
-                            ))}
-                        </div>
-                    }
-                    <input ref={nameRef} placeholder="Full Name" />
-                    <input ref={emailRef} type="email" placeholder="Email Address" />
-                    <input ref={passwordRef} type="password" placeholder="Password" />
-                    <input ref={passwordConfirmationRef} type="password" placeholder="Password Confirmation" />
-                    <button className="btn btn-block">Signup</button>
-                    <p className="message">
-                        Already Registered? <Link to="/login">Sign in</Link>
-                    </p>
-                </form>
+        <div className="hold-transition register-page">
+            <div className="register-box">
+                <div className="register-logo">
+                    <img src="adminlte/dist/img/Grupo_1@2x.png" alt="Transporto" />
+                </div>
+                <div className="card">
+                    <div className="card-body register-card-body">
+                        <p className="login-box-msg">Regístrese</p>
+                        <form onSubmit={onSubmit}>
+                            {errors && 
+                                <div className="alert">
+                                    {Object.keys(errors).map(key => (
+                                        <p key={key}>{errors[key][0]}</p>
+                                    ))}
+                                </div>
+                            }
+                            <div className="input-group mb-3">
+                                <input ref={nameRef} type="text" className="form-control" placeholder="Nombre completo" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-user" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="input-group mb-3">
+                                <input ref={emailRef} type="email" className="form-control" placeholder="Email" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-envelope" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="input-group mb-3">
+                                <input ref={passwordRef} type="password" className="form-control" placeholder="Password" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-lock" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="input-group mb-3">
+                                <input ref={passwordConfirmationRef} type="password" className="form-control" placeholder="Confirme password" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-lock" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-4">
+                                <button type="submit" className="btn btn-primary btn-block">Registrar</button>
+                            </div>
+                            {/* /.col */}
+                        </form>
+                        <br />
+                        <Link to="/login">Ya tengo credenciales de acceso</Link>
+                    </div>
+                    {/* /.form-box */}
+                </div>
+                {/* /.card */}
             </div>
         </div>
     )

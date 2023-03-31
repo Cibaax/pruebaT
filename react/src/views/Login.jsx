@@ -92,7 +92,7 @@ export default function Login() {
               <a href="forgot-password.html">Olvidé mi contraseña</a>
             </p>
             <p className="mb-0">
-              <a href="register.html" className="text-center">Registrarme</a>
+              <Link to="/signup">Registrarme</Link>
             </p>
           </div>
           {/* /.login-card-body */}
