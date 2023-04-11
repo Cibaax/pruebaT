@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 
-export default function Inicio3() {
+export default function Inicio7() {
 const [users, setUsers] = useState([]);
 const [loading, setLoading] = useState(false)
 
@@ -53,7 +53,7 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
                                         <h3 className="timeline-header font-weight-bold">Planificación - Paso #1</h3>
                                         <div className="timeline-body bg-green">
                                             Carga del acta de asignación de líderes del PESV realizada con éxito.
@@ -69,7 +69,7 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
                                         <h3 className="timeline-header font-weight-bold">Planificación - Paso #2</h3>
                                         <div className="timeline-body bg-green">
                                             Cargue del acta de comité de seguridad vial del PESV realizada con éxito.
@@ -85,12 +85,45 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
                                         <h3 className="timeline-header font-weight-bold">Planificación - Paso #3</h3>
+                                        <div className="timeline-body bg-green">
+                                            Cargue de la política de seguridad vial de la organización realizada con éxito.
+                                        </div>
+                                        <div className="timeline-footer bg-green">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* END timeline item */}
+
+                                {/* timeline item */}
+                                <div>
+                                    <i className="fas fa-user-check bg-blue" />
+                                    <div className="timeline-item">
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #4</h3>
+                                        <div className="timeline-body bg-green">
+                                            Diligenciamiento de la lista de chequeo realizado con éxito.
+                                        </div>
+                                        <div className="timeline-footer bg-green">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* END timeline item */}
+
+                                {/* timeline item */}
+                                <div>
+                                    <i className="fas fa-user-check bg-blue" />
+                                    <div className="timeline-item">
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #5</h3>
                                         <div className="timeline-body bg-red">
-                                            Haga clic en el siguiente botón para cargar la política de seguridad vial de la organización.
+                                            Haga clic en el botón para subir los datos de su inventario. Además haga clic en 
+                                            Llenar encuesta para ingresar datos de la encuesta de movilidad
                                         </div>
                                         <div className="timeline-footer bg-red">
-                                            <a href="/actapolitica" className="btn btn-primary btn-sm">Asignar Política</a>
+                                            <a href="/encuestamovilidad" className="btn btn-primary btn-sm">Llenar encuesta</a>
                                             &nbsp;&nbsp;
                                             <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
                                         </div>

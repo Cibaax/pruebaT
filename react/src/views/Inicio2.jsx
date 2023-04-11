@@ -53,7 +53,7 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #1</h3>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #1</h3>
                                         <div className="timeline-body bg-red">
                                             Haga clic en el siguiente botón para cargar el acta de asignación de líderes del PESV.
                                         </div>

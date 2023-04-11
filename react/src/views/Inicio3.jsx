@@ -54,7 +54,7 @@ const [loading, setLoading] = useState(false)
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
                                     <span className="time font-weight-bold">Finalizado 30/03/2023  <i className="fas fa-clock" />11:42</span>
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #1</h3>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #1</h3>
                                         <div className="timeline-body bg-green">
                                             Carga del acta de asignación de líderes del PESV realizada con éxito.
                                         </div>
@@ -70,12 +70,12 @@ const [loading, setLoading] = useState(false)
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
 
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #2</h3>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #2</h3>
                                         <div className="timeline-body bg-red">
                                             Haga clic en el siguiente botón para cargar el acta de comité de seguridad vial del PESV.
                                         </div>
                                         <div className="timeline-footer bg-red">
-                                            <a href="/actalideres" className="btn btn-primary btn-sm">Asignar Comité</a>
+                                            <a href="/actacomite" className="btn btn-primary btn-sm">Asignar Comité</a>
                                             &nbsp;&nbsp;
                                             <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
                                         </div>

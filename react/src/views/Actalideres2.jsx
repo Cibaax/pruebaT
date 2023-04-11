@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 
-export default function Actalideres() {
+export default function Actalideres2() {
 const [users, setUsers] = useState([]);
 const [loading, setLoading] = useState(false)
 
@@ -36,10 +36,28 @@ const [loading, setLoading] = useState(false)
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-sm-6">
-                                            
+                                            <div className="form-group">
+                                                <label htmlFor="actaLideres">Cargar archivo</label>
+                                                <div className="input-group">
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="actaLideres" />
+                                                        <label className="custom-file-label" htmlFor="actaLideres">Elija el archivo</label>
+                                                    </div>
+                                                    <div className="input-group-append">
+                                                        <span className="input-group-text">Subir</span>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <button type="button" className="btn btn-default" data-toggle="modal" data-target="#modal-lg">
+                                                    Previsualizar documento
+                                                </button>
+                                            </div>
                                         </div>
                                         <div className="col-sm-6 text-right">
                                             <div className="form-group">
+                                                <a href="https://api-transporto.herokuapp.com/templates/Guia Acta Asignacion Lider del PESV.docx" className="btn btn-app bg-secondary" style={{height: 100}}>
+                                                    <i className="fa fa-book" /> Descargar archivo subido<br />Guía Acta Asignación<br /> Líder del PESV
+                                                </a>
                                                 <a href="https://api-transporto.herokuapp.com/templates/Guia Acta Asignacion Lider del PESV.docx" className="btn btn-app bg-secondary" style={{height: 100}}>
                                                     <i className="fa fa-book" /> Descargar plantilla<br />Guía Acta Asignación<br /> Líder del PESV
                                                 </a>
@@ -49,8 +67,25 @@ const [loading, setLoading] = useState(false)
 
                                     <div className="row">
                                         <div className="col-sm-12">
-                                        <textarea id="summernote" defaultValue={"Bucaramanga, 11 de Abril de 2023<br /><br />Señor(a)<br /><strong>XXXXXXXXX XXXXXXXX<br />Cargo: XXXXXXXXXXX</strong><br /><br />Ref: Asignación como líder para la implementación del PESV<br /><br />Cordial saludo.<br /><br />Considerando lo establecido en la resolución... "} />
+                                            <div className="form-group">
+                                                <label htmlFor="referencia">Referencia</label>
+                                                <input type="text" className="form-control" id="referencia" placeholder="Líder de Diseño e Implementación PESV" />
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label htmlFor="destinatario">Destinatario</label>
+                                                <input type="text" className="form-control" id="destinatario" placeholder="Pedro González" />
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label htmlFor="fechaDocumento">Fecha en Documento</label>
+                                                <input type="text" className="form-control" id="fechaDocumento" placeholder="05/04/2023" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -85,8 +120,7 @@ const [loading, setLoading] = useState(false)
                         {/* /.modal-dialog */}
                     </div>
                     {/* /.modal */}
-                </div>
-                {/* /.container-fluid */}
+                </div>{/* /.container-fluid */}
             </div>
             {/* /.content-header */}
         </div>

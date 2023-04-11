@@ -22,8 +22,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
-        $user->rols()->attach(1);
-        //$token = $user->createToken('main')->plainTextToken;
+        $token = $user->createToken('main')->plainTextToken;
         
         return response(compact('user'));
     }
@@ -38,10 +37,8 @@ class AuthController extends Controller
         }
         /** @var User $user */
         $user = Auth::user();
-        $usuario = User::find($user['id'])->rols;
-        $rol = $usuario[0]['id'];
         $token = $user->createToken('main')->plainTextToken;
-        return response(compact('user', 'token', 'rol'));
+        return response(compact('user', 'token'));
     }
 
     public function logout(Request $request)

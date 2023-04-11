@@ -24,6 +24,7 @@ export default function Signup() {
         axiosClient.post('/signup', payload)
         .then(({data}) => {
             setUser(data.user);
+            alert("Se registraron sus datos satisfactoriamente. Ingrese con los valores creados para loguearse en el aplicativo");
             window.location = '/login';
         })
         .catch(err => {

@@ -66,26 +66,26 @@ const [loading, setLoading] = useState(false)
                                             <div className="form-group">
                                                 <br />
                                                 <label htmlFor="vehiculosPropios">Vehículos propios</label>
-                                                <input type="number" className="form-control" id="vehiculosPropios" placeholder="" />
+                                                <input type="number" className="form-control" id="vehiculosPropios" placeholder="17" />
                                             </div>
                                         </div>
                                         <div className="col-sm-2">
                                             <div className="form-group">
                                                 <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
-                                                <input type="number" className="form-control" id="vehiculosContratados" placeholder="" />
+                                                <input type="number" className="form-control" id="vehiculosContratados" placeholder="5" />
                                             </div>
                                         </div>
                                         <div className="col-sm-2">
                                             <div className="form-group">
                                                 <br />
                                                 <label htmlFor="conductoresPropios">Conductores propios</label>
-                                                <input type="number" className="form-control" id="conductoresPropios" placeholder="" />
+                                                <input type="number" className="form-control" id="conductoresPropios" placeholder="23" />
                                             </div>
                                         </div>
                                         <div className="col-sm-2">
                                             <div className="form-group">
                                                 <label htmlFor="conductoresContratados">Conductores contratados</label>
-                                                <input type="number" className="form-control" id="conductoresContratados" placeholder="" />
+                                                <input type="number" className="form-control" id="conductoresContratados" placeholder="4" />
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="nombreEmpresa">Nombre y/o Razón Social</label>
-                                                <input type="text" className="form-control" id="nombreEmpresa" placeholder="" />
+                                                <input type="text" className="form-control" id="nombreEmpresa" placeholder="Cargueros de Colombia S.A.S." />
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="nit">NIT</label>
-                                                <input type="text" className="form-control" id="nit" placeholder="" />
+                                                <input type="text" className="form-control" id="nit" placeholder="900.000.000" />
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="direccion">Dirección</label>
-                                                <input type="text" className="form-control" id="direccion" placeholder="" />
+                                                <input type="text" className="form-control" id="direccion" placeholder="Avenida Siempreviva #55-55" />
                                             </div>
                                         </div>
                                     </div>
@@ -121,13 +121,13 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label htmlFor="telefono1">Teléfono #1</label>
-                                                <input type="text" className="form-control" id="telefono1" placeholder="" />
+                                                <input type="text" className="form-control" id="telefono1" placeholder="123456789" />
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label htmlFor="telefono2">Teléfono #2</label>
-                                                <input type="text" className="form-control" id="telefono2" placeholder="" />
+                                                <input type="text" className="form-control" id="telefono2" placeholder="987654321" />
                                             </div>
                                         </div>
                                     </div>
@@ -136,14 +136,25 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="email">Correo Electrónico</label>
-                                                <input type="email" className="form-control" id="email" placeholder="" />
+                                                <input type="email" className="form-control" id="email" placeholder="empresa@correo.com" />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col-sm-6">
-                                        <div className="form-group">
+                                            <div className="form-group">
+                                                <label>Departamento</label>
+                                                <select className="form-control">
+                                                    <option>Antioquia</option>
+                                                    <option>Cundinamarca</option>
+                                                    <option>Santander</option>
+                                                    <option>Valle del Cauca</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
                                                 <label>Ciudad</label>
                                                 <select className="form-control">
                                                     <option>Bogotá D.C</option>
@@ -151,11 +162,6 @@ const [loading, setLoading] = useState(false)
                                                     <option>Cali</option>
                                                     <option>Medellín</option>
                                                 </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                
                                             </div>
                                         </div>
                                     </div>

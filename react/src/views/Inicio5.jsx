@@ -53,8 +53,8 @@ const [loading, setLoading] = useState(false)
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #1</h3>
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #1</h3>
                                         <div className="timeline-body bg-green">
                                             Carga del acta de asignación de líderes del PESV realizada con éxito.
                                         </div>
@@ -65,20 +65,14 @@ const [loading, setLoading] = useState(false)
                                 </div>
                                 {/* END timeline item */}
 
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">28 Marzo 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-
                                 {/* timeline item */}
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 28/03/2023  <i className="fas fa-clock" />08:30</span>
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #2</h3>
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #2</h3>
                                         <div className="timeline-body bg-green">
-                                            Cargar del acta de comité de seguridad vial realizada con éxito.
+                                            Cargue del acta de comité de seguridad vial del PESV realizada con éxito.
                                         </div>
                                         <div className="timeline-footer bg-green">
                                             
@@ -87,20 +81,14 @@ const [loading, setLoading] = useState(false)
                                 </div>
                                 {/* END timeline item */}
 
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">30 Marzo 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-
                                 {/* timeline item */}
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 30/03/2023  <i className="fas fa-clock" />09:04</span>
-                                        <h3 className="timeline-header font-weight-bold">Preparación - Paso #3</h3>
+                                        <span className="time font-weight-bold">Finalizado 27/03/2023  <i className="fas fa-clock" />17:42</span>
+                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #3</h3>
                                         <div className="timeline-body bg-green">
-                                            Cargar del acta de comité de seguridad vial realizada con éxito.
+                                            Cargue de la política de seguridad vial de la organización realizada con éxito.
                                         </div>
                                         <div className="timeline-footer bg-green">
                                             
@@ -109,68 +97,18 @@ const [loading, setLoading] = useState(false)
                                 </div>
                                 {/* END timeline item */}
 
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">31 Marzo 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-
                                 {/* timeline item */}
                                 <div>
                                     <i className="fas fa-user-check bg-blue" />
                                     <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 31/03/2023  <i className="fas fa-clock" />14:08</span>
                                         <h3 className="timeline-header font-weight-bold">Planificación - Paso #4</h3>
-                                        <div className="timeline-body bg-green">
-                                            Cargar del acta de comité de seguridad vial realizada con éxito.
-                                        </div>
-                                        <div className="timeline-footer bg-green">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* END timeline item */}
-
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">03 Abril 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-
-                                {/* timeline item */}
-                                <div>
-                                    <i className="fas fa-user-check bg-blue" />
-                                    <div className="timeline-item">
-                                    <span className="time font-weight-bold">Finalizado 03/04/2023  <i className="fas fa-clock" />11:52</span>
-                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #5</h3>
-                                        <div className="timeline-body bg-green">
-                                            Cargar del acta de comité de seguridad vial realizada con éxito.
-                                        </div>
-                                        <div className="timeline-footer bg-green">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* END timeline item */}
-
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">05 Abril 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-
-                                {/* timeline item */}
-                                <div>
-                                    <i className="fas fa-user-check bg-blue" />
-                                    <div className="timeline-item">
-                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #6</h3>
                                         <div className="timeline-body bg-red">
-                                            Haga clic en el siguiente botón para cargar el acta de comité de seguridad vial del PESV.
+                                            Haga clic en el siguiente botón para diligenciar la lista de chequeo.
                                         </div>
                                         <div className="timeline-footer bg-red">
-                                            <a href="/actalideres" className="btn btn-primary btn-sm">Asignar Comité</a>
+                                            <a href="/listachequeo" className="btn btn-primary btn-sm">Asignar Lista de Chequeo</a>
                                             &nbsp;&nbsp;
-                                            <a href="/inicio6" className="btn btn-primary btn-sm">Siguiente paso</a>
+                                            <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
                                         </div>
                                     </div>
                                 </div>

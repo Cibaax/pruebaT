@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 
-export default function Actalideres() {
+export default function Informemovilidad() {
 const [users, setUsers] = useState([]);
 const [loading, setLoading] = useState(false)
 
@@ -15,7 +15,7 @@ const [loading, setLoading] = useState(false)
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <h1 className="m-0">Planificación - Paso #1</h1>
+                            <h1 className="m-0">Planificación - Paso #6</h1>
                         </div>{/* /.col */}
                         <div className="col-sm-6">
                             <ol className="breadcrumb float-sm-right">
@@ -29,19 +29,34 @@ const [loading, setLoading] = useState(false)
                             {/* general form elements */}
                             <div className="card card-primary">
                                 <div className="card-header">
-                                    <h3 className="card-title">Digite los datos para el cargue del acta de líderes.</h3>
+                                    <h3 className="card-title">Digite los datos para el cargue del informe de diagnóstico de la encuesta de movilidad.</h3>
                                 </div>
                                 {/* /.card-header */}
                                 {/* form start */}
                                 <div className="card-body">
                                     <div className="row">
-                                        <div className="col-sm-6">
-                                            
+                                    <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label htmlFor="actaLideres">Cargar archivo</label>
+                                                <div className="input-group">
+                                                    <div className="custom-file">
+                                                        <input type="file" className="custom-file-input" id="actaLideres" />
+                                                        <label className="custom-file-label" htmlFor="actaLideres">Elija el archivo</label>
+                                                    </div>
+                                                    <div className="input-group-append">
+                                                        <span className="input-group-text">Subir</span>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <button type="button" className="btn btn-default" data-toggle="modal" data-target="#modal-lg">
+                                                    Previsualizar documento
+                                                </button>
+                                            </div>
                                         </div>
                                         <div className="col-sm-6 text-right">
                                             <div className="form-group">
-                                                <a href="https://api-transporto.herokuapp.com/templates/Guia Acta Asignacion Lider del PESV.docx" className="btn btn-app bg-secondary" style={{height: 100}}>
-                                                    <i className="fa fa-book" /> Descargar plantilla<br />Guía Acta Asignación<br /> Líder del PESV
+                                                <a href="https://api-transporto.herokuapp.com/templates/Guia Informe Diagnostico Encuesta de Movilidad.docx" className="btn btn-app bg-secondary" style={{height: 100}}>
+                                                    <i className="fa fa-book" /> Descargar plantilla<br />Guía Informe Diagnóstico<br /> Encuesta de Movilidad
                                                 </a>
                                             </div>
                                         </div>
@@ -49,14 +64,31 @@ const [loading, setLoading] = useState(false)
 
                                     <div className="row">
                                         <div className="col-sm-12">
-                                        <textarea id="summernote" defaultValue={"Bucaramanga, 11 de Abril de 2023<br /><br />Señor(a)<br /><strong>XXXXXXXXX XXXXXXXX<br />Cargo: XXXXXXXXXXX</strong><br /><br />Ref: Asignación como líder para la implementación del PESV<br /><br />Cordial saludo.<br /><br />Considerando lo establecido en la resolución... "} />
+                                            <div className="form-group">
+                                                <label htmlFor="referencia">Referencia</label>
+                                                <input type="text" className="form-control" id="referencia" placeholder="Análisis de Encuesta de Seguridad Vial" />
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label htmlFor="destinatario">Destinatario</label>
+                                                <input type="text" className="form-control" id="destinatario" placeholder="Carlos García" />
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label htmlFor="fechaDocumento">Fecha en Documento</label>
+                                                <input type="text" className="form-control" id="fechaDocumento" placeholder="05/04/2023" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 {/* /.card-body */}
                                 <div className="card-footer">
-                                    <a href="/inicio3" className="btn btn-primary btn-sm">Guardar</a>
+                                    <a href="/inicio9" className="btn btn-primary btn-sm">Guardar</a>
                                 </div>
                             </div>
                             {/* /.card */}

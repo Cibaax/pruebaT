@@ -4,7 +4,7 @@ import axiosClient from "../axios-client.js";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 
 export default function DefaultLayout() {
-    const {user, token, rol, setUser, setToken, setRol} = useStateContext()
+    const {user, token, setUser, setToken} = useStateContext()
 
     if(!token) {
         return <Navigate to="/login" />
@@ -19,7 +19,6 @@ export default function DefaultLayout() {
         .then(() => {
             setUser({})
             setToken(null)
-            setRol(null)
         })
     }
 
@@ -63,49 +62,47 @@ export default function DefaultLayout() {
                         </p>
                     </a>
                     </li>
-                    {rol == 1 &&
-                        <li className="nav-item menu-is-opening menu-open">
-                        <a href="#" className="nav-link">
-                            <i className="nav-icon fa fa-th-large" />
-                            <p>
-                            Módulos PESV
-                            <i className="right fas fa-angle-left" />
-                            </p>
+                    <li className="nav-item menu-is-opening menu-open">
+                    <a href="#" className="nav-link">
+                        <i className="nav-icon fa fa-th-large" />
+                        <p>
+                        Módulos PESV
+                        <i className="right fas fa-angle-left" />
+                        </p>
+                    </a>
+                    <ul className="nav nav-treeview">
+                        <li className="nav-item">
+                        <a href="/preparacion" className={`nav-link ${pathname == '/preparacion' ? "active" : ""}`}>
+                            <i className="nav-icon fa fa-list-alt" />
+                            <p>Preparación</p>
                         </a>
-                        <ul className="nav nav-treeview">
-                            <li className="nav-item">
-                            <a href="/preparacion" className={`nav-link ${pathname == '/preparacion' ? "active" : ""}`}>
-                                <i className="nav-icon fa fa-list-alt" />
-                                <p>Preparación</p>
-                            </a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="/planificacion" className={`nav-link ${pathname == '/planificacion' ? "active" : ""}`}>
-                                <i className="nav-icon fa fa-columns" />
-                                <p>Planificación</p>
-                            </a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="/implementacion" className={`nav-link ${pathname == '/implementacion' ? "active" : ""}`}>
-                                <i className="nav-icon fa fa-cogs" />
-                                <p>Implementación</p>
-                            </a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="/seguimiento" className={`nav-link ${pathname == '/seguimiento' ? "active" : ""}`}>
-                                <i className="nav-icon fa fa-eye" />
-                                <p>Seguimiento</p>
-                            </a>
-                            </li>
-                            <li className="nav-item">
-                            <a href="/mejora" className={`nav-link ${pathname == '/mejora' ? "active" : ""}`}>
-                                <i className="nav-icon fa fa-check-square" />
-                                <p>Mejora</p>
-                            </a>
-                            </li>
-                        </ul>
                         </li>
-                    }
+                        <li className="nav-item">
+                        <a href="/planificacion" className={`nav-link ${pathname == '/planificacion' ? "active" : ""}`}>
+                            <i className="nav-icon fa fa-columns" />
+                            <p>Planificación</p>
+                        </a>
+                        </li>
+                        <li className="nav-item">
+                        <a href="/implementacion" className={`nav-link ${pathname == '/implementacion' ? "active" : ""}`}>
+                            <i className="nav-icon fa fa-cogs" />
+                            <p>Implementación</p>
+                        </a>
+                        </li>
+                        <li className="nav-item">
+                        <a href="/seguimiento" className={`nav-link ${pathname == '/seguimiento' ? "active" : ""}`}>
+                            <i className="nav-icon fa fa-eye" />
+                            <p>Seguimiento</p>
+                        </a>
+                        </li>
+                        <li className="nav-item">
+                        <a href="/mejora" className={`nav-link ${pathname == '/mejora' ? "active" : ""}`}>
+                            <i className="nav-icon fa fa-check-square" />
+                            <p>Mejora</p>
+                        </a>
+                        </li>
+                    </ul>
+                    </li>
                     <li className="nav-item">
                     <a href="/informes" className={`nav-link ${pathname == '/informes' ? "active" : ""}`}>
                         <i className="nav-icon fa fa-file" />
@@ -162,89 +159,26 @@ export default function DefaultLayout() {
                     </form>
                 </div>
                 </li>
-                {/* Messages Dropdown Menu */}
-                <li className="nav-item dropdown">
-                <a className="nav-link" data-toggle="dropdown" href="#">
-                    <i className="far fa-comments" />
-                    <span className="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" className="dropdown-item">
-                    {/* Message Start */}
-                    <div className="media">
-                        <img src="adminlte/dist/img/user1-128x128.jpg" alt="User Avatar" className="img-size-50 mr-3 img-circle" />
-                        <div className="media-body">
-                        <h3 className="dropdown-item-title">
-                            Brad Diesel
-                            <span className="float-right text-sm text-danger"><i className="fas fa-star" /></span>
-                        </h3>
-                        <p className="text-sm">Call me whenever you can...</p>
-                        <p className="text-sm text-muted"><i className="far fa-clock mr-1" /> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                    {/* Message End */}
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a href="#" className="dropdown-item">
-                    {/* Message Start */}
-                    <div className="media">
-                        <img src="adminlte/dist/img/user8-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
-                        <div className="media-body">
-                        <h3 className="dropdown-item-title">
-                            John Pierce
-                            <span className="float-right text-sm text-muted"><i className="fas fa-star" /></span>
-                        </h3>
-                        <p className="text-sm">I got your message bro</p>
-                        <p className="text-sm text-muted"><i className="far fa-clock mr-1" /> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                    {/* Message End */}
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a href="#" className="dropdown-item">
-                    {/* Message Start */}
-                    <div className="media">
-                        <img src="adminlte/dist/img/user3-128x128.jpg" alt="User Avatar" className="img-size-50 img-circle mr-3" />
-                        <div className="media-body">
-                        <h3 className="dropdown-item-title">
-                            Nora Silvester
-                            <span className="float-right text-sm text-warning"><i className="fas fa-star" /></span>
-                        </h3>
-                        <p className="text-sm">The subject goes here</p>
-                        <p className="text-sm text-muted"><i className="far fa-clock mr-1" /> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                    {/* Message End */}
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a href="#" className="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-                </li>
                 {/* Notifications Dropdown Menu */}
                 <li className="nav-item dropdown">
                 <a className="nav-link" data-toggle="dropdown" href="#">
-                    <i className="far fa-bell" />
-                    <span className="badge badge-warning navbar-badge">15</span>
+                    <i className="fa fa-pencil-alt"  />
                 </a>
                 <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span className="dropdown-item dropdown-header">15 Notifications</span>
+                    <span className="dropdown-item dropdown-header">Accesos directos frecuentes</span>
                     <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
-                    <i className="fas fa-envelope mr-2" /> 4 new messages
-                    <span className="float-right text-muted text-sm">3 mins</span>
+                    <i className="fa fa-bullseye mr-2" /> Inventarios
                     </a>
                     <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
-                    <i className="fas fa-users mr-2" /> 8 friend requests
-                    <span className="float-right text-muted text-sm">12 hours</span>
+                    <i className="fa fa-bullseye mr-2" /> Evaluación de Riesgo
                     </a>
                     <div className="dropdown-divider" />
                     <a href="#" className="dropdown-item">
-                    <i className="fas fa-file mr-2" /> 3 new reports
-                    <span className="float-right text-muted text-sm">2 days</span>
+                    <i className="fa fa-bullseye mr-2" /> Accidentalidad
                     </a>
                     <div className="dropdown-divider" />
-                    <a href="#" className="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
                 </li>
                 <li className="nav-item">

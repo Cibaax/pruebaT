@@ -22,6 +22,15 @@ import Inicio3 from "./views/Inicio3.jsx";
 import Inicio4 from "./views/Inicio4.jsx";
 import Inicio5 from "./views/Inicio5.jsx";
 import Inicio6 from "./views/Inicio6.jsx";
+import Actacomite from "./views/Actacomite.jsx";
+import Actapolitica from "./views/Actapolitica.jsx";
+import Listachequeo from "./views/Listachequeo.jsx";
+import Inventarios from "./views/Inventarios.jsx";
+import Inicio7 from "./views/Inicio7.jsx";
+import Encuestamovilidad from "./views/Encuestamovilidad.jsx";
+import Inicio8 from "./views/Inicio8.jsx";
+import Actalideres2 from "./views/Actalideres2.jsx";
+import Informemovilidad from "./views/Informemovilidad.jsx";
 
 
 const router = createBrowserRouter([
@@ -82,6 +91,34 @@ const router = createBrowserRouter([
                 element: <Actalideres />
             },
             {
+                path: '/actalideres2',
+                element: <Actalideres2 />
+            },
+            {
+                path: '/actacomite',
+                element: <Actacomite />
+            },
+            {
+                path: '/actapolitica',
+                element: <Actapolitica />
+            },
+            {
+                path: '/listachequeo',
+                element: <Listachequeo />
+            },
+            {
+                path: '/inventarios',
+                element: <Inventarios />
+            },
+            {
+                path: '/encuestamovilidad',
+                element: <Encuestamovilidad />
+            },
+            {
+                path: '/informemovilidad',
+                element: <Informemovilidad />
+            },
+            {
                 path: '/inicio3',
                 element: <Inicio3 />
             },
@@ -96,6 +133,14 @@ const router = createBrowserRouter([
             {
                 path: '/inicio6',
                 element: <Inicio6 />
+            },
+            {
+                path: '/inicio7',
+                element: <Inicio7 />
+            },
+            {
+                path: '/inicio8',
+                element: <Inicio8 />
             },
             {
                 path: '/users',
