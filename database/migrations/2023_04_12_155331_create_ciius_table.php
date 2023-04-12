@@ -16,8 +16,7 @@ class CreateCiiusTable extends Migration
         Schema::create('ciius', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 10);
-            $table->string('actividad', 200)->nullable();
-            $table->tinyInteger('principal')->default('1');
+            $table->string('actividad', 400)->nullable();
             $table->timestamps();
         });
     }

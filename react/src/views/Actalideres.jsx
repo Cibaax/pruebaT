@@ -29,7 +29,7 @@ const [loading, setLoading] = useState(false)
                             {/* general form elements */}
                             <div className="card card-primary">
                                 <div className="card-header">
-                                    <h3 className="card-title">Digite los datos para el cargue del acta de líderes.</h3>
+                                    <h3 className="card-title">Digite los datos para el cargue del acta de líder PESV.</h3>
                                 </div>
                                 {/* /.card-header */}
                                 {/* form start */}
