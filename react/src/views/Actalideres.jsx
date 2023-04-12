@@ -49,7 +49,7 @@ const [loading, setLoading] = useState(false)
 
                                     <div className="row">
                                         <div className="col-sm-12">
-                                        <textarea id="summernote" defaultValue={"Bucaramanga, 11 de Abril de 2023<br /><br />Señor(a)<br /><strong>XXXXXXXXX XXXXXXXX<br />Cargo: XXXXXXXXXXX</strong><br /><br />Ref: Asignación como líder para la implementación del PESV<br /><br />Cordial saludo.<br /><br />Considerando lo establecido en la resolución... "} />
+                                        <textarea id="summernote" defaultValue={"Bucaramanga, XX de XXXXXXXXX de 2023<br /><br />Señor(a)<br /><strong>XXXXXXXXX XXXXXXXX<br />Cargo: XXXXXXXXXXX</strong><br /><br />Ref: Asignación como líder para la implementación del PESV<br /><br />Cordial saludo.<br /><br />Considerando lo establecido en la resolución... "} />
 
                                         </div>
                                     </div>
