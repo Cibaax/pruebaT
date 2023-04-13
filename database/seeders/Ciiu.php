@@ -16,10 +16,7 @@ class Ciiu extends Seeder
     {
         $ciius = json_decode(file_get_contents(base_path('database/seeders/data/ciiu.json')));
         collect($ciius)->map(function($actividad, $codigo) {
-            $ciuu = new CiiuModel();
-            $ciuu->codigo = $codigo;
-            $ciuu->actividad = $actividad;
-            $ciuu->save();
+            CiiuModel::firstOrNew([ 'codigo' => $codigo, 'actividad' => $actividad])->save();
         });
     }
 }
