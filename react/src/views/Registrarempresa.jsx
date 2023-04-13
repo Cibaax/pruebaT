@@ -1,10 +1,41 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Select from 'react-select'
 import axiosClient from "../axios-client";
 
 export default function Registrarempresa() {
-const [users, setUsers] = useState([]);
-const [loading, setLoading] = useState(false)
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const [ciiu, setCiiu] = useState(null)
+    const [departamentos, setDepartamentos] = useState(null)
+    const [ciudades, setCiudades] = useState(null)
+    const [selectedCity, setSelectedCity] = useState({})
+
+    if (ciiu === null) {
+        axiosClient.get('/ciiu')
+            .then(({ data }) => {
+                setCiiu(data)
+            })
+    }
+
+    if (departamentos === null) {
+        axiosClient.get('/departamentos')
+            .then(({ data }) => {
+                setDepartamentos(data)
+            })
+    }
+
+    const refreshCiudades = (e) => {
+        if (e) {
+            const { value } = e;
+            axiosClient.get('/ciudades/' + value)
+            .then(({ data }) => {
+                setCiudades(data)
+            })
+        } else {
+            setCiudades(null)
+        }
+        setSelectedCity(null)
+    }
 
 
     return (
@@ -35,84 +66,92 @@ const [loading, setLoading] = useState(false)
                                 {/* form start */}
                                 <div className="card-body">
                                     <div className="row">
-                                        <div className="col-sm-2">
-                                            {/* select */}
-                                            <div className="form-group">
-                                                <label>Actividad Principal (CIIU)</label>
-                                                <select className="form-control">
-                                                    <option>4911</option>
-                                                    <option>4912</option>
-                                                    <option>4921</option>
-                                                    <option>4922</option>
-                                                    <option>4923</option>
-                                                    <option>4930</option>
-                                                    <option>5011</option>
-                                                </select>
+                                        <div className="col-4">
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label htmlFor="nit">NIT</label>
+                                                    <input type="text" className="form-control" id="nit" placeholder="Nit" />
+                                                </div>
+                                            </div>
+
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label htmlFor="nombreEmpresa">Nombre y/o Razón Social</label>
+                                                    <input type="text" className="form-control" id="nombreEmpresa" placeholder="Nombre y/o Razón Social" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <label>Actividad Secundaria (CIIU)</label>
-                                                <select className="form-control">
-                                                    <option>301</option>
-                                                    <option>302</option>
-                                                    <option>303</option>
-                                                    <option>304</option>
-                                                    <option>305</option>
-                                                </select>
+                                        <div className="col-4">
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label htmlFor="nit">Representante Legal</label>
+                                                    <input type="text" className="form-control" id="representante" placeholder="Nombre completo" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-sm-2">
+                                        <div className="col-4">
+                                            <div className="col-sm-12">
+                                                {/* select */}
+                                                <div className="form-group">
+                                                    <label>Actividad Principal (CIIU)</label>
+                                                    <Select
+                                                        id={'actP'}
+                                                        placeholder={'Seleccione actividad principal'}
+                                                        isClearable={true}
+                                                        options={ciiu}
+                                                        isDisabled={ciiu === null}
+                                                        isLoading={ciiu === null}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label>Actividad Secundaria (CIIU)</label>
+                                                    <Select
+                                                        id={'actS'}
+                                                        placeholder={'Seleccione actividad secundaria'}
+                                                        isClearable={true}
+                                                        options={ciiu}
+                                                        isDisabled={ciiu === null}
+                                                        isLoading={ciiu === null}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
                                             <div className="form-group">
-                                                <br />
                                                 <label htmlFor="vehiculosPropios">Vehículos propios</label>
-                                                <input type="number" className="form-control" id="vehiculosPropios" placeholder="17" />
+                                                <input type="number" className="form-control" id="vehiculosPropios" placeholder="0" />
                                             </div>
                                         </div>
-                                        <div className="col-sm-2">
+                                        <div className="col-sm-3">
                                             <div className="form-group">
                                                 <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
-                                                <input type="number" className="form-control" id="vehiculosContratados" placeholder="5" />
+                                                <input type="number" className="form-control" id="vehiculosContratados" placeholder="0" />
                                             </div>
                                         </div>
-                                        <div className="col-sm-2">
+                                        <div className="col-sm-3">
                                             <div className="form-group">
-                                                <br />
                                                 <label htmlFor="conductoresPropios">Conductores propios</label>
-                                                <input type="number" className="form-control" id="conductoresPropios" placeholder="23" />
+                                                <input type="number" className="form-control" id="conductoresPropios" placeholder="0" />
                                             </div>
                                         </div>
-                                        <div className="col-sm-2">
+                                        <div className="col-sm-3">
                                             <div className="form-group">
                                                 <label htmlFor="conductoresContratados">Conductores contratados</label>
-                                                <input type="number" className="form-control" id="conductoresContratados" placeholder="4" />
+                                                <input type="number" className="form-control" id="conductoresContratados" placeholder="0" />
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="nombreEmpresa">Nombre y/o Razón Social</label>
-                                                <input type="text" className="form-control" id="nombreEmpresa" placeholder="Cargueros de Colombia S.A.S." />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="nit">NIT</label>
-                                                <input type="text" className="form-control" id="nit" placeholder="900.000.000" />
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    <hr />
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="direccion">Dirección</label>
-                                                <input type="text" className="form-control" id="direccion" placeholder="Avenida Siempreviva #55-55" />
+                                                <input type="text" className="form-control" id="direccion" placeholder="Dirección" />
                                             </div>
                                         </div>
                                     </div>
@@ -121,22 +160,13 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label htmlFor="telefono1">Teléfono #1</label>
-                                                <input type="text" className="form-control" id="telefono1" placeholder="123456789" />
+                                                <input type="text" className="form-control" id="telefono1" placeholder="Telefono principal" />
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label htmlFor="telefono2">Teléfono #2</label>
-                                                <input type="text" className="form-control" id="telefono2" placeholder="987654321" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="email">Correo Electrónico</label>
-                                                <input type="email" className="form-control" id="email" placeholder="empresa@correo.com" />
+                                                <input type="text" className="form-control" id="telefono2" placeholder="Telefono secundario" />
                                             </div>
                                         </div>
                                     </div>
@@ -145,23 +175,29 @@ const [loading, setLoading] = useState(false)
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Departamento</label>
-                                                <select className="form-control">
-                                                    <option>Antioquia</option>
-                                                    <option>Cundinamarca</option>
-                                                    <option>Santander</option>
-                                                    <option>Valle del Cauca</option>
-                                                </select>
+                                                <Select
+                                                    id={'departamento'}
+                                                    placeholder={'Seleccione el departamento'}
+                                                    isClearable={true}
+                                                    options={departamentos}
+                                                    isDisabled={departamentos === null}
+                                                    isLoading={departamentos === null}
+                                                    onChange={(e) => refreshCiudades(e)}
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Ciudad</label>
-                                                <select className="form-control">
-                                                    <option>Bogotá D.C</option>
-                                                    <option>Bucaramanga</option>
-                                                    <option>Cali</option>
-                                                    <option>Medellín</option>
-                                                </select>
+                                                <Select
+                                                    id={'ciudad'}
+                                                    placeholder={'Seleccione una ciudad'}
+                                                    isClearable={true}
+                                                    options={ciudades}
+                                                    isDisabled={ciudades === null}
+                                                    value={selectedCity}
+                                                    onChange={(e) => setSelectedCity(e ?? null)}
+                                                />
                                             </div>
                                         </div>
                                     </div>

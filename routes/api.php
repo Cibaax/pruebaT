@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\HelperController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('/users', UserController::class);
 });
+
+Route::get('/ciiu', [HelperController::class, 'ciiu']);
+Route::get('/departamentos', [HelperController::class, 'departamentos']);
+Route::get('/ciudades/{departamento_id}', [HelperController::class, 'ciudades']);
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
