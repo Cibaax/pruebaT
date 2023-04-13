@@ -29,6 +29,7 @@ class CreateCompaniesTable extends Migration
             $table->smallInteger('vehiculos_contratados')->nullable();
             $table->smallInteger('conductores_propios')->nullable();
             $table->smallInteger('conductores_contratados')->nullable();
+            $table->string('representante_legal', 100)->nullable();
 
             $table->unique(["nit"], 'nit_UNIQUE');
 
