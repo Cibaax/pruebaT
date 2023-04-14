@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class time_lines extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'fecha_referencia',
+        'estado',
+        'steps_id',
+        'users_id',
+        'companies_id'
+    ];
 }

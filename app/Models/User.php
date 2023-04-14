@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Rols;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -45,5 +46,9 @@ class User extends Authenticatable
 
     public function rols(){
         return $this->belongsToMany(Rols::class, 'rol_user', 'user_id', 'rol_id');
+    }
+
+    public function companias(){
+        return $this->belongsToMany(companies::class, 'user_company', 'users_id');
     }
 }

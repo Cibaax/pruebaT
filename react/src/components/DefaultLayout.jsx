@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 
 export default function DefaultLayout() {
-    const {user, token, setUser, setToken} = useStateContext()
+    const {user, token, setUser, setToken, setSteps, baseUrl} = useStateContext()
 
     if(!token) {
         return <Navigate to="/login" />
@@ -27,6 +27,11 @@ export default function DefaultLayout() {
         .then(({data}) => {
             setUser(data)
         })
+
+        axiosClient.get('/steps/get')
+        .then(({data}) => {
+            setSteps(data)
+        })
     }, [])
 
     return (
@@ -35,7 +40,7 @@ export default function DefaultLayout() {
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
             {/* Brand Logo */}
             <a href="https://transporto.com.co/" className="brand-link">
-                <img src="adminlte/dist/img/miniLogo.png" alt="Transporto Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
+                <img src={baseUrl+`/adminlte/dist/img/miniLogo.png`} alt="Transporto Logo" className="brand-image img-circle elevation-3" style={{opacity: '.8'}} />
                 <span className="brand-text font-weight-light">Transporto</span>
             </a>
             {/* Sidebar */}
@@ -43,7 +48,7 @@ export default function DefaultLayout() {
                 {/* Sidebar user panel (optional) */}
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div className="image">
-                    <img src="adminlte/dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+                    <img src={baseUrl+`/adminlte/dist/img/user2-160x160.jpg`} className="img-circle elevation-2" alt="User Image" />
                 </div>
                 <div className="info">
                     <a href="#" className="d-block">{user.name}</a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CompaniesController;
+use App\Http\Controllers\Api\StepsController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\HelperController;
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/compania/crear', [CompaniesController::class, 'crear']);
+    Route::get('/steps/get', [StepsController::class, 'getActualStep']);
+    Route::get('/compania/show', [CompaniesController::class, 'show']);
+    Route::post('/compania/create', [CompaniesController::class, 'create']);
 
 
     Route::get('/user', function (Request $request) {

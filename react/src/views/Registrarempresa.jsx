@@ -11,26 +11,10 @@ export default function Registrarempresa() {
         payload.departamento = selectedDepartament?.value;
         payload.ciudad = selectedCiudad?.value;
 
-        console.log(payload)
-        axiosClient.post('/compania/crear', payload)
-            .then(({ data }) => {
-                dd(data)
-                // setUser(data.user)
-                // setToken(data.token)
-            })
-            // .catch((err) => {
-            //     const response = err.response;
-            //     if (response && response.status === 422) {
-            //         if (response.data.errors) {
-            //             setErrors(response.data.errors)
-            //         } else {
-            //             console.log(response.data.message)
-            //             setErrors({
-            //                 email: [response.data.message]
-            //             })
-            //         }
-            //     }
-            // })
+        axiosClient.post('/compania/create', payload)
+            .then(() => {
+                location.href = 'inicio';
+            });
     };
 
     const [ciiu, setCiiu] = useState(null)
@@ -40,6 +24,15 @@ export default function Registrarempresa() {
     const [selectedDepartament, setSelectedDepartament] = useState({})
     const [actividadPrincipal, setActividadPrincipal] = useState(null)
     const [actividadSecundaria, setActividadSecundaria] = useState(null)
+    const [empresa, setEmpresa] = useState(null)
+
+    if (empresa == null) {
+        axiosClient.get('/compania/show')
+            .then(({ data }) => {
+                if (data) location.href = 'inicio';
+                setEmpresa(data);
+            })
+    }
 
     if (ciiu === null) {
         axiosClient.get('/ciiu')
