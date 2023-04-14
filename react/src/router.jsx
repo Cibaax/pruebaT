@@ -31,6 +31,7 @@ import Encuestamovilidad from "./views/Encuestamovilidad.jsx";
 import Inicio8 from "./views/Inicio8.jsx";
 import Actalideres2 from "./views/Actalideres2.jsx";
 import Informemovilidad from "./views/Informemovilidad.jsx";
+import Steps from "./views/Steps.jsx";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Navigate to="/inicio" />
+            },
+            {
+                path: '/inicio',
+                element: <Inicio />
+            },
+            {
+                path: '/steps/:id',
+                element: <Steps />
             },
             {
                 path: '/preparacion',

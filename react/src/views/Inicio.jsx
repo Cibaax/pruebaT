@@ -1,37 +1,75 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Inicio() {
-const [users, setUsers] = useState([]);
-const [loading, setLoading] = useState(false)
+    const [empresa, setEmpresa] = useState(false)
+    const { steps } = useStateContext()
 
-useEffect(() => {
-    getUsers();
-}, [])
-
-const onDelete = (u) => {
-    if(!window.confirm("Are you sure you want to delete this user???")) {
-        return;
+    if (!empresa) {
+        axiosClient.get('/compania/show')
+            .then(({ data }) => {
+                setEmpresa(data)
+            })
     }
 
-    axiosClient.delete(`/users/${u.id}`)
-    .then(() => {
-        getUsers()
-    })
-}
+    const PreEmpresa = () => {
+        return (!empresa ? (
+            <div>
+                <i className="fas fa-user-check bg-blue" />
+                <div className="timeline-item">
+                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
+                    <div className="timeline-body bg-red">
+                        Haga clic en el siguiente botón para empezar a registrar los datos de la empresa.
+                    </div>
+                    <div className="timeline-footer bg-red">
+                        <a href="/registrarempresa" className="btn btn-primary btn-sm">Registrar</a>
+                    </div>
+                </div>
+            </div>
+        ) : (
+            <div>
+                <i className="fas fa-user-check bg-blue" />
+                <div className="timeline-item">
+                    <span className="time font-weight-bold">Finalizado el {empresa.fecha} <i className="fas fa-clock" /> {empresa.hora}</span>
+                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
+                    <div className="timeline-body bg-green pt-3 pb-3">
+                        Se ha registrado la información de la empresa '<strong>{empresa.razon_social}</strong>' con éxito
+                    </div>
+                </div>
+            </div>
+        ))
+    }
 
-const getUsers = () => {
-    setLoading(true)
-    axiosClient.get('/users')
-    .then(({data}) => {
-        setLoading(false)
-        setUsers(data.data)
-    })
-    .catch(() => {
-        setLoading(false)
-    })
-}
+    const capitalizeFirstLowercaseRest = str => {
+        return (
+            str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+        );
+    };
+
+    const Pasos = () => {
+        return ((empresa && steps?.length > 0) &&
+            steps.map((line, key_line) => {
+                return (
+                    <div key={key_line}>
+                        <i className="fas fa-user-check bg-blue" />
+                        <div className="timeline-item">
+                            <h3 className="timeline-header font-weight-bold">{capitalizeFirstLowercaseRest(line.step.fase)} - Paso #{line.step.numero}</h3>
+                            <div className="timeline-body bg-red">
+                                {line.step.descripcion}
+                            </div>
+                            <div className="timeline-footer bg-red">
+                                <a href={"/steps/" + line.step.numero} className="btn btn-primary btn-sm">Realizar este paso</a>
+                                &nbsp;&nbsp;
+                                <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        )
+    }
+
     return (
         <div>
 
@@ -40,7 +78,7 @@ const getUsers = () => {
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
-                            <h1 className="m-0">Bienvenido(a)</h1>
+                            <h1 className="m-0">{!empresa ? 'Bienvenido(a)' : 'Línea de tiempo del proceso - Nivel ' + empresa.nivel}</h1>
                         </div>{/* /.col */}
                         <div className="col-sm-6">
                             <ol className="breadcrumb float-sm-right">
@@ -53,22 +91,17 @@ const getUsers = () => {
                         <div className="col-md-12">
                             {/* The time line */}
                             <div className="timeline">
-                                
-                                {/* timeline item */}
-                                <div>
-                                    <i className="fas fa-user-check bg-blue" />
-                                    <div className="timeline-item">
-                                        <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
-                                        <div className="timeline-body bg-red">
-                                            Haga clic en el siguiente botón para empezar a registrar los datos de la empresa.
-                                        </div>
-                                        <div className="timeline-footer bg-red">
-                                            <a href="/registrarempresa" className="btn btn-primary btn-sm">Registrar</a>
-                                        </div>
+
+                                {empresa &&
+                                    <div className="time-label">
+                                        <span className="bg-info">{empresa.label_fecha}</span>
                                     </div>
-                                </div>
-                                {/* END timeline item */}
-                                
+                                }
+
+
+                                <PreEmpresa />
+                                <Pasos />
+
                                 <div>
                                     <i className="fas fa-clock bg-gray" />
                                 </div>

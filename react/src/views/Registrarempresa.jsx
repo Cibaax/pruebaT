@@ -1,10 +1,66 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import Select from 'react-select'
 import axiosClient from "../axios-client";
+import { useForm } from "react-hook-form";
 
 export default function Registrarempresa() {
-const [users, setUsers] = useState([]);
-const [loading, setLoading] = useState(false)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = payload => {
+        payload.actividadP = actividadPrincipal?.value;
+        payload.actividadS = actividadSecundaria?.value;
+        payload.departamento = selectedDepartament?.value;
+        payload.ciudad = selectedCiudad?.value;
+
+        axiosClient.post('/compania/create', payload)
+            .then(() => {
+                location.href = 'inicio';
+            });
+    };
+
+    const [ciiu, setCiiu] = useState(null)
+    const [departamentos, setDepartamentos] = useState(null)
+    const [ciudades, setCiudades] = useState(null)
+    const [selectedCiudad, setSelectedCiudad] = useState({})
+    const [selectedDepartament, setSelectedDepartament] = useState({})
+    const [actividadPrincipal, setActividadPrincipal] = useState(null)
+    const [actividadSecundaria, setActividadSecundaria] = useState(null)
+    const [empresa, setEmpresa] = useState(null)
+
+    if (empresa == null) {
+        axiosClient.get('/compania/show')
+            .then(({ data }) => {
+                if (data) location.href = 'inicio';
+                setEmpresa(data);
+            })
+    }
+
+    if (ciiu === null) {
+        axiosClient.get('/ciiu')
+            .then(({ data }) => {
+                setCiiu(data)
+            })
+    }
+
+    if (departamentos === null) {
+        axiosClient.get('/departamentos')
+            .then(({ data }) => {
+                setDepartamentos(data)
+            })
+    }
+
+    const refreshCiudades = (e) => {
+        setSelectedDepartament(e)
+        if (e) {
+            const { value } = e;
+            axiosClient.get('/ciudades/' + value)
+                .then(({ data }) => {
+                    setCiudades(data)
+                })
+        } else {
+            setCiudades(null)
+        }
+        setSelectedCiudad(null)
+    }
 
 
     return (
@@ -33,143 +89,167 @@ const [loading, setLoading] = useState(false)
                                 </div>
                                 {/* /.card-header */}
                                 {/* form start */}
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-sm-2">
-                                            {/* select */}
-                                            <div className="form-group">
-                                                <label>Actividad Principal (CIIU)</label>
-                                                <select className="form-control">
-                                                    <option>4911</option>
-                                                    <option>4912</option>
-                                                    <option>4921</option>
-                                                    <option>4922</option>
-                                                    <option>4923</option>
-                                                    <option>4930</option>
-                                                    <option>5011</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <label>Actividad Secundaria (CIIU)</label>
-                                                <select className="form-control">
-                                                    <option>301</option>
-                                                    <option>302</option>
-                                                    <option>303</option>
-                                                    <option>304</option>
-                                                    <option>305</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <br />
-                                                <label htmlFor="vehiculosPropios">Vehículos propios</label>
-                                                <input type="number" className="form-control" id="vehiculosPropios" placeholder="17" />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
-                                                <input type="number" className="form-control" id="vehiculosContratados" placeholder="5" />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <br />
-                                                <label htmlFor="conductoresPropios">Conductores propios</label>
-                                                <input type="number" className="form-control" id="conductoresPropios" placeholder="23" />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-2">
-                                            <div className="form-group">
-                                                <label htmlFor="conductoresContratados">Conductores contratados</label>
-                                                <input type="number" className="form-control" id="conductoresContratados" placeholder="4" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="card-body">
+                                        <div className="row">
+                                            <div className="col-4">
+                                                <div className="col-sm-12">
+                                                    <div className="form-group">
+                                                        <label htmlFor="nit">NIT</label>
+                                                        <input type="text" className={'form-control ' + (errors.nit && 'is-invalid')} placeholder="Nit" {...register("nit", { required: true })} />
+                                                        <small>{errors.nit && 'Este campo es requerido'}</small>
+                                                    </div>
+                                                </div>
 
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="nombreEmpresa">Nombre y/o Razón Social</label>
-                                                <input type="text" className="form-control" id="nombreEmpresa" placeholder="Cargueros de Colombia S.A.S." />
+                                                <div className="col-sm-12">
+                                                    <div className="form-group">
+                                                        <label htmlFor="nombreEmpresa">Nombre y/o Razón Social</label>
+                                                        <input type="text" className={'form-control ' + (errors.nombreEmpresa && 'is-invalid')} placeholder="Nombre y/o Razón Social" {...register("nombreEmpresa", { required: true })} />
+                                                        <small>{errors.nombreEmpresa && 'Este campo es requerido'}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-4">
+                                                <div className="col-sm-12">
+                                                    <div className="form-group">
+                                                        <label htmlFor="nit">Representante Legal</label>
+                                                        <input type="text" className="form-control" placeholder="Representante Legal" {...register("representante")} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-4">
+                                                <div className="col-sm-12">
+                                                    {/* select */}
+                                                    <div className="form-group">
+                                                        <label>Actividad Principal (CIIU)</label>
+                                                        <Select
+                                                            className={errors.actividadP && 'is-invalid'}
+                                                            placeholder={'Seleccione actividad principal'}
+                                                            isClearable={true}
+                                                            options={ciiu}
+                                                            required={true}
+                                                            isDisabled={ciiu === null}
+                                                            isLoading={ciiu === null}
+                                                            onChange={(e) => setActividadPrincipal(e ?? null)}
+                                                        />
+                                                        <small>{(actividadPrincipal === null) && 'Este campo es requerido'}</small>
+                                                    </div>
+                                                </div>
+                                                <div className="col-sm-12">
+                                                    <div className="form-group">
+                                                        <label>Actividad Secundaria (CIIU)</label>
+                                                        <Select
+                                                            placeholder={'Seleccione actividad secundaria'}
+                                                            isClearable={true}
+                                                            options={ciiu}
+                                                            isDisabled={ciiu === null}
+                                                            isLoading={ciiu === null}
+                                                            required={true}
+                                                            onChange={(e) => setActividadSecundaria(e ?? null)}
+                                                        />
+                                                        <small>{(actividadSecundaria === null) && 'Este campo es requerido'}</small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-3">
+                                                <div className="form-group">
+                                                    <label htmlFor="vehiculosPropios">Vehículos propios</label>
+                                                    <input type="number" className={'form-control ' + (errors.vehiculosPropios && 'is-invalid')} value="0" {...register("vehiculosPropios", { required: true })} />
+                                                    <small>{errors.vehiculosPropios && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="form-group">
+                                                    <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
+                                                    <input type="number" className={'form-control ' + (errors.vehiculosContratados && 'is-invalid')} value="0" {...register("vehiculosContratados", { required: true })} />
+                                                    <small>{errors.vehiculosContratados && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="form-group">
+                                                    <label htmlFor="conductoresPropios">Conductores propios</label>
+                                                    <input type="number" className={'form-control ' + (errors.conductoresPropios && 'is-invalid')} value="0" {...register("conductoresPropios", { required: true })} />
+                                                    <small>{errors.conductoresPropios && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="form-group">
+                                                    <label htmlFor="conductoresContratados">Conductores contratados</label>
+                                                    <input type="number" className={'form-control ' + (errors.conductoresContratados && 'is-invalid')} value="0" {...register("conductoresContratados", { required: true })} />
+                                                    <small>{errors.conductoresContratados && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label htmlFor="direccion">Dirección</label>
+                                                    <input type="text" className={'form-control ' + (errors.direccion && 'is-invalid')} placeholder="Dirección" {...register("direccion", { required: true })} />
+                                                    <small>{errors.direccion && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="nit">NIT</label>
-                                                <input type="text" className="form-control" id="nit" placeholder="900.000.000" />
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <div className="form-group">
+                                                    <label htmlFor="telefono1">Teléfono #1</label>
+                                                    <input type="text" className={'form-control ' + (errors.telefono1 && 'is-invalid')} placeholder="Telefono principal" {...register("telefono1", { required: true })} />
+                                                    <small>{errors.telefono1 && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <div className="form-group">
+                                                    <label htmlFor="telefono2">Teléfono #2</label>
+                                                    <input type="text" className="form-control" placeholder="Telefono secundario" {...register("telefono2")} />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="direccion">Dirección</label>
-                                                <input type="text" className="form-control" id="direccion" placeholder="Avenida Siempreviva #55-55" />
+                                        <div className="row">
+                                            <div className="col-sm-6">
+                                                <div className="form-group">
+                                                    <label>Departamento</label>
+                                                    <Select
+                                                        id={'departamento'}
+                                                        placeholder={'Seleccione el departamento'}
+                                                        isClearable={true}
+                                                        options={departamentos}
+                                                        isDisabled={departamentos === null}
+                                                        isLoading={departamentos === null}
+                                                        onChange={(e) => refreshCiudades(e)}
+                                                        required={true}
+                                                    />
+                                                    <small>{(selectedDepartament === null) && 'Este campo es requerido'}</small>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <div className="form-group">
+                                                    <label>Ciudad</label>
+                                                    <Select
+                                                        id={'ciudad'}
+                                                        placeholder={'Seleccione una ciudad'}
+                                                        isClearable={true}
+                                                        options={ciudades}
+                                                        isDisabled={ciudades === null}
+                                                        value={selectedCiudad}
+                                                        onChange={(e) => setSelectedCiudad(e ?? null)}
+                                                        required={true}
+                                                    />
+                                                    <small>{(selectedCiudad === null) && 'Este campo es requerido'}</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label htmlFor="telefono1">Teléfono #1</label>
-                                                <input type="text" className="form-control" id="telefono1" placeholder="123456789" />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label htmlFor="telefono2">Teléfono #2</label>
-                                                <input type="text" className="form-control" id="telefono2" placeholder="987654321" />
-                                            </div>
-                                        </div>
+                                    {/* /.card-body */}
+                                    <div className="card-footer">
+                                        <button type="submit" className="btn btn-primary btn-sm">Registrar</button>
                                     </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <div className="form-group">
-                                                <label htmlFor="email">Correo Electrónico</label>
-                                                <input type="email" className="form-control" id="email" placeholder="empresa@correo.com" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label>Departamento</label>
-                                                <select className="form-control">
-                                                    <option>Antioquia</option>
-                                                    <option>Cundinamarca</option>
-                                                    <option>Santander</option>
-                                                    <option>Valle del Cauca</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="form-group">
-                                                <label>Ciudad</label>
-                                                <select className="form-control">
-                                                    <option>Bogotá D.C</option>
-                                                    <option>Bucaramanga</option>
-                                                    <option>Cali</option>
-                                                    <option>Medellín</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* /.card-body */}
-                                <div className="card-footer">
-                                    <a href="/inicio2" className="btn btn-primary btn-sm">Registrar</a>
-                                </div>
+                                </form>
                             </div>
                             {/* /.card */}
                         </div>
