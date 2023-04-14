@@ -11,22 +11,29 @@ class HelperController extends Controller
 {
     public function ciiu()
     {
-        return CiiuModel::all()->map(function($_ciuu){
-            return [ "value" => $_ciuu->id, "label" => "$_ciuu->codigo - $_ciuu->actividad" ];
+        return CiiuModel::all()->map(function ($_ciuu) {
+            return ["value" => $_ciuu->id, "label" => "$_ciuu->codigo - $_ciuu->actividad"];
         });
     }
 
     public function departamentos()
     {
-        return departments::all()->map(function($departamento){
-            return [ "value" => $departamento->id, "label" => $departamento->nombre ];
+        return departments::all()->map(function ($departamento) {
+            return ["value" => $departamento->id, "label" => $departamento->nombre];
         });
     }
 
     public function ciudades(string $departamento_id)
     {
-        return cities::where('departments_id', $departamento_id)->get()->map(function($ciudad){
-            return [ "value" => $ciudad->id, "label" => $ciudad->nombre ];
+        return cities::where('departments_id', $departamento_id)->get()->map(function ($ciudad) {
+            return ["value" => $ciudad->id, "label" => $ciudad->nombre];
+        });
+    }
+
+    public function ciudades_all()
+    {
+        return cities::all()->map(function ($ciudad) {
+            return ["value" => $ciudad->id, "label" => $ciudad->nombre];
         });
     }
 }

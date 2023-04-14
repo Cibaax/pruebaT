@@ -41,24 +41,23 @@ export default function Inicio() {
         ))
     }
 
-    const capitalizeFirstLowercaseRest = str => {
-        return (
-            str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
-        );
-    };
-
     const Pasos = () => {
         return ((empresa && steps?.length > 0) &&
             steps.map((line, key_line) => {
+                let color = line.estado === 3 ? 'bg-green' : 'bg-red';
+                let estado = line.estado === 3 ? 'Completado' : 'Pendiente';
                 return (
                     <div key={key_line}>
                         <i className="fas fa-user-check bg-blue" />
                         <div className="timeline-item">
-                            <h3 className="timeline-header font-weight-bold">{capitalizeFirstLowercaseRest(line.step.fase)} - Paso #{line.step.numero}</h3>
-                            <div className="timeline-body bg-red">
-                                {line.step.descripcion}
+                            {line.fecha_finalizacion &&
+                                <span className="time font-weight-bold">Finalizado el {line.fecha} <i className="fas fa-clock" /> {line.hora}</span>
+                            }
+                            <h3 className="timeline-header font-weight-bold">{line.step.fase} - Paso #{line.step.numero}</h3>
+                            <div className={"timeline-footer bg-red " + color}>
+                                {line.step.descripcion} <br /> <strong>Estado:</strong> {estado}
                             </div>
-                            <div className="timeline-footer bg-red">
+                            <div className={"timeline-footer bg-red " + color} hidden={line.estado === 3}>
                                 <a href={"/steps/" + line.step.numero} className="btn btn-primary btn-sm">Realizar este paso</a>
                                 &nbsp;&nbsp;
                                 <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>

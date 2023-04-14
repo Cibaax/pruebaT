@@ -16,4 +16,9 @@ class time_lines extends Model
         'users_id',
         'companies_id'
     ];
+
+    public function step()
+    {
+        return $this->hasOne(steps::class, 'id', 'steps_id');
+    }
 }

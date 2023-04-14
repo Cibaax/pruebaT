@@ -3,7 +3,7 @@ import Select from 'react-select';
 import axiosClient from '../../axios-client'
 import { useForm } from "react-hook-form";
 
-export default function Step1({ time_line }) {
+export default function Step2({ time_line }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [ciudades, setCiudades] = useState(null)
     const [selectedCiudad, setSelectedCiudad] = useState({})
@@ -55,7 +55,7 @@ export default function Step1({ time_line }) {
                                     </div>
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <input type="hidden" value={'lider'} {...register("cuerpo_acta", { required: true })} />
+                                    <input type="hidden" value={'comite'} {...register("cuerpo_acta", { required: true })} />
                                     <div className="card-body">
                                         <div className="row">
                                             <div className="col-6">

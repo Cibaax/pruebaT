@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
 import Step1 from "./steps/1";
+import Step2 from "./steps/2";
 
 export default function Steps() {
-    let {id} = useParams()
-    
+    const { id } = useParams()
+    const { steps } = useStateContext()
+
     let components = {
         1: Step1,
-        // 2: Step2,
+        2: Step2,
         // 3: Step3,
         // 4: Step4,
         // 5: Step5,
@@ -32,5 +35,5 @@ export default function Steps() {
     };
 
     const Step = components[id || 1];
-    return <Step />
+    return <Step time_line={steps[id - 1] ?? null} />
 }

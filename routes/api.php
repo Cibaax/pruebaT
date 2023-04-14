@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/steps/get', [StepsController::class, 'getActualStep']);
+    Route::post('/steps/{id}/update', [StepsController::class, 'saveStep']);
     Route::get('/compania/show', [CompaniesController::class, 'show']);
     Route::post('/compania/create', [CompaniesController::class, 'create']);
 
@@ -34,6 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/ciiu', [HelperController::class, 'ciiu']);
 Route::get('/departamentos', [HelperController::class, 'departamentos']);
+Route::get('/ciudades/all', [HelperController::class, 'ciudades_all']);
 Route::get('/ciudades/{departamento_id}', [HelperController::class, 'ciudades']);
 
 Route::post('/signup', [AuthController::class, 'signup']);
