@@ -19,21 +19,14 @@ class CreateTimeLinesTable extends Migration
             $table->dateTime('fecha_finalizacion')->nullable();
             $table->unsignedTinyInteger('estado')->nullable();
             $table->string('info_boton', 100)->nullable();
-            $table->unsignedBigInteger('users_id');
-            $table->unsignedBigInteger('steps_id');
+            $table->unsignedBigInteger('users_id')->index();
+            $table->unsignedBigInteger('steps_id')->index();
 
-            $table->index(["users_id"], 'fk_time_lines_users1_idx');
-
-            $table->index(["steps_id"], 'fk_time_lines_steps1_idx');
-
-
-            $table->foreign('users_id', 'fk_time_lines_users1_idx')
-                ->references('id')->on('users')
+            $table->foreign('users_id')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('steps_id', 'fk_time_lines_steps1_idx')
-                ->references('id')->on('steps')
+            $table->foreign('steps_id')->references('id')->on('steps')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();

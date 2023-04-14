@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin', 
             'email' => 'admin@admin.com',
             'password' => bcrypt('12345678')
-        ])->assignRole('Transporto');;
+        ])->assignRole('Transporto');
 
         $rol_usuario = Role::updateOrCreate([
             'name' => 'Usuario'

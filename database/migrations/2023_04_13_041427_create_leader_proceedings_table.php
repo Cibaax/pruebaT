@@ -20,15 +20,12 @@ class CreateLeaderProceedingsTable extends Migration
             $table->string('destinatario', 100);
             $table->string('cargo', 200);
             $table->text('cuerpo_acta');
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('users_id')->index();
 
-            $table->index(["users_id"], 'fk_leader_proceedings_users1_idx');
-
-
-            $table->foreign('users_id', 'fk_leader_proceedings_users1_idx')
-                ->references('id')->on('users')
+            $table->foreign('users_id')->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
+
             $table->timestamps();
         });
     }

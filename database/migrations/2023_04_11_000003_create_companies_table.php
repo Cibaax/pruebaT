@@ -15,46 +15,35 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cities_id')->index();
+            $table->unsignedBigInteger('main_activity_ciiu')->index();
+            $table->unsignedBigInteger('secondary_activity_ciiu')->index();
+            
+            $table->string('nit', 20)->nullable()->unique();
             $table->string('razon_social', 200)->nullable();
-            $table->string('nit', 20)->nullable();
+            $table->string('representante_legal', 100)->nullable();
             $table->string('email', 150)->nullable();
             $table->string('telefono1', 20)->nullable();
             $table->string('telefono2', 20)->nullable();
             $table->string('direccion', 250)->nullable();
-            $table->string('nivel', 20)->nullable();
-            $table->unsignedBigInteger('cities_id');
-            $table->unsignedBigInteger('main_activity_ciiu');
-            $table->unsignedBigInteger('secondary_activity_ciiu');
             $table->smallInteger('vehiculos_propios')->nullable();
             $table->smallInteger('vehiculos_contratados')->nullable();
             $table->smallInteger('conductores_propios')->nullable();
             $table->smallInteger('conductores_contratados')->nullable();
-            $table->string('representante_legal', 100)->nullable();
             $table->string('nivel', 10)->nullable();
 
-            $table->unique(["nit"], 'nit_UNIQUE');
-
-            $table->index(["cities_id"], 'fk_companies_cities1_idx');
-
-            $table->index(["main_activity_ciiu"], 'fk_companies_ciius1_idx');
-
-            $table->index(["secondary_activity_ciiu"], 'fk_companies_ciius2_idx');
-
-
-            $table->foreign('cities_id', 'fk_companies_cities1_idx')
-                ->references('id')->on('cities')
+            $table->foreign('cities_id')->references('id')->on('cities')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('main_activity_ciiu', 'fk_companies_ciius1_idx')
-                ->references('id')->on('ciius')
+            $table->foreign('main_activity_ciiu')->references('id')->on('ciius')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('secondary_activity_ciiu', 'fk_companies_ciius2_idx')
-                ->references('id')->on('ciius')
+            $table->foreign('secondary_activity_ciiu')->references('id')->on('ciius')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
