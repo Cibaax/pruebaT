@@ -2,8 +2,10 @@ import { useState } from 'react'
 import Select from 'react-select';
 import axiosClient from '../../axios-client'
 import { useForm } from "react-hook-form";
+import { useStateContext } from '../../contexts/ContextProvider';
 
 export default function Planeacion({ time_line }) {
+    const { setSteps } = useStateContext()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [ciudades, setCiudades] = useState(false)
     const [selectedCiudad, setSelectedCiudad] = useState({})
@@ -15,7 +17,8 @@ export default function Planeacion({ time_line }) {
             axiosClient.post(`/steps/${time_line_id}/update`, {
                 payload: payload
             })
-                .then((_data) => {
+                .then(({ data }) => {
+                    setSteps(data)
                     location.href = 'inicio';
                 });
         }
@@ -52,10 +55,10 @@ export default function Planeacion({ time_line }) {
                             <div className="card card-primary">
                                 <div className="card-header">
                                     <div className='row'>
-                                        <div className="col-6">
+                                        <div className="col-md-6">
                                             <h3 className="card-title">{time_line?.step?.descripcion}</h3>
                                         </div>
-                                        <div className="col-6" style={{ position: 'absolute', top: '10%', right: '-46%' }}>
+                                        <div className="col-md-6" style={{ position: 'absolute', top: '10%', right: '-46%' }}>
                                             <a title="Descarga demo de Acta de líderes" href="https://api-transporto.herokuapp.com/templates/Guia Acta Asignacion Lider del PESV.docx" className="btn bg-secondary">
                                                 <i className="fa fa-book" />
                                             </a>
@@ -65,7 +68,7 @@ export default function Planeacion({ time_line }) {
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="card-body">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-md-6">
                                                 <div className="form-group">
                                                     <label>Ciudad</label>
                                                     <Select
@@ -81,27 +84,30 @@ export default function Planeacion({ time_line }) {
                                                     <small>{(selectedCiudad === null) && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="fechaDocumento">Fecha en Documento</label>
                                                     <input type="date" className="form-control" id="fechaDocumento" placeholder="Fecha" {...register("fecha_acta", { required: true })} />
+                                                    <small>{errors.fecha_acta && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="destinatario">Destinatario</label>
                                                     <input type="text" className="form-control" id="destinatario" placeholder="Destinatario" {...register("destinatario", { required: true })} />
+                                                    <small>{errors.destinatario && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
 
-                                            <div className="col-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="cargo">Cargo</label>
                                                     <input type="text" className="form-control" id="cargo" placeholder="Cargo" {...register("cargo", { required: true })} />
+                                                    <small>{errors.cargo && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,30 +119,8 @@ export default function Planeacion({ time_line }) {
                             </div>
                         </div>
                     </div>
-                    <div className="modal fade" id="modal-lg">
-                        <div className="modal-dialog modal-lg">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Previsualización del archivo cargado</h4>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <img src="http://localhost:8000/templates/plantilla de ejemplo.png" style={{ width: 600 }} />
-                                </div>
-                                <div className="modal-footer justify-content-between">
-                                    <button type="button" className="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                            {/* /.modal-content */}
-                        </div>
-                        {/* /.modal-dialog */}
-                    </div>
-                    {/* /.modal */}
-                </div>{/* /.container-fluid */}
+                </div>
             </div>
-            {/* /.content-header */}
         </div >
     )
 }

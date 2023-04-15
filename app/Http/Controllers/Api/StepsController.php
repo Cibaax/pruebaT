@@ -13,7 +13,7 @@ use Log;
 
 class StepsController extends Controller
 {
-    function getActualStep(Request $request)
+    function getActualStep()
     {
         $compania = Auth::user()->compania;
         if (!$compania)
@@ -73,5 +73,7 @@ class StepsController extends Controller
             $timeline->estado = 3;
             $timeline->save();
         }
+
+        return $this->getActualStep();
     }
 }

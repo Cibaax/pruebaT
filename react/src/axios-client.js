@@ -13,9 +13,15 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use((response) => {
     return response;
 }, (error) => {
-    localStorage.removeItem('ACCESS_TOKEN')
-    localStorage.clear()
-    location.href = '/login'
+    try {
+        const {response} = error;
+        if(response.status == 401) {
+            localStorage.removeItem('ACCESS_TOKEN')
+        }
+    } catch(e) {
+        console.log(e)
+    }
+    
 
     throw error;
 })

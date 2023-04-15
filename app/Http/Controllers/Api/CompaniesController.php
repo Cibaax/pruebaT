@@ -45,5 +45,8 @@ class CompaniesController extends Controller
         $user = Auth::user();
         $user->companies_id = $compania->id;
         $user->save();
+
+        $steps = new StepsController();
+        return $steps->getActualStep();
     }
 }

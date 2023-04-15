@@ -2,18 +2,20 @@ import { useState } from 'react'
 import Select from 'react-select';
 import axiosClient from '../../axios-client'
 import { useForm } from "react-hook-form";
+import { useStateContext } from '../../contexts/ContextProvider';
 
 export default function Step4({ time_line }) {
+    const { setSteps } = useStateContext()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [ciudades, setCiudades] = useState(null)
-    const [selectedCiudad, setSelectedCiudad] = useState({})
     const time_line_id = time_line?.id;
     const onSubmit = payload => {
         if (time_line_id) {
             axiosClient.post(`/steps/${time_line_id}/update`, {
                 payload: payload
             })
-                .then((_data) => {
+                .then(({ data }) => {
+                    setSteps(data)
                     location.href = 'inicio';
                 });
         }

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import Select from 'react-select'
 import axiosClient from "../axios-client";
 import { useForm } from "react-hook-form";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Registrarempresa() {
+    const { steps, setSteps } = useStateContext()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = payload => {
         payload.actividadP = actividadPrincipal?.value;
@@ -12,8 +14,8 @@ export default function Registrarempresa() {
         payload.ciudad = selectedCiudad?.value;
 
         axiosClient.post('/compania/create', payload)
-            .then(() => {
-                location.href = 'inicio';
+            .then(({ data }) => {
+                setSteps(data)
             });
     };
 
@@ -62,37 +64,30 @@ export default function Registrarempresa() {
         setSelectedCiudad(null)
     }
 
-
     return (
         <div>
-
-            {/* Content Header (Page header) */}
             <div className="content-header">
                 <div className="container-fluid">
                     <div className="row mb-2">
                         <div className="col-sm-6">
                             <h1 className="m-0">Nueva Empresa</h1>
-                        </div>{/* /.col */}
+                        </div>
                         <div className="col-sm-6">
                             <ol className="breadcrumb float-sm-right">
                                 <li className="breadcrumb-item">Inicio</li>
                             </ol>
-                        </div>{/* /.col */}
-                    </div>{/* /.row */}
-                    {/* Timelime example  */}
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {/* general form elements */}
                             <div className="card card-primary">
                                 <div className="card-header">
                                     <h3 className="card-title">Digite los datos de la empresa</h3>
                                 </div>
-                                {/* /.card-header */}
-                                {/* form start */}
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="card-body">
                                         <div className="row">
-                                            <div className="col-4">
+                                            <div className="col-md-4 col-sm-12">
                                                 <div className="col-sm-12">
                                                     <div className="form-group">
                                                         <label htmlFor="nit">NIT</label>
@@ -109,7 +104,7 @@ export default function Registrarempresa() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-4">
+                                            <div className="col-md-4 col-sm-12">
                                                 <div className="col-sm-12">
                                                     <div className="form-group">
                                                         <label htmlFor="nit">Representante Legal</label>
@@ -117,7 +112,7 @@ export default function Registrarempresa() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-4">
+                                            <div className="col-md-4 col-sm-12">
                                                 <div className="col-sm-12">
                                                     {/* select */}
                                                     <div className="form-group">
@@ -154,28 +149,28 @@ export default function Registrarempresa() {
                                         </div>
                                         <hr />
                                         <div className="row">
-                                            <div className="col-sm-3">
+                                            <div className="col-md-3 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="vehiculosPropios">Vehículos propios</label>
                                                     <input type="number" className={'form-control ' + (errors.vehiculosPropios && 'is-invalid')} placeholder="0" {...register("vehiculosPropios", { required: true })} />
                                                     <small>{errors.vehiculosPropios && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-3">
+                                            <div className="col-md-3 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
                                                     <input type="number" className={'form-control ' + (errors.vehiculosContratados && 'is-invalid')} placeholder="0" {...register("vehiculosContratados", { required: true })} />
                                                     <small>{errors.vehiculosContratados && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-3">
+                                            <div className="col-md-3 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="conductoresPropios">Conductores propios</label>
                                                     <input type="number" className={'form-control ' + (errors.conductoresPropios && 'is-invalid')} placeholder="0" {...register("conductoresPropios", { required: true })} />
                                                     <small>{errors.conductoresPropios && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-3">
+                                            <div className="col-md-3 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="conductoresContratados">Conductores contratados</label>
                                                     <input type="number" className={'form-control ' + (errors.conductoresContratados && 'is-invalid')} placeholder="0" {...register("conductoresContratados", { required: true })} />
@@ -195,14 +190,14 @@ export default function Registrarempresa() {
                                         </div>
 
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="telefono1">Teléfono #1</label>
                                                     <input type="text" className={'form-control ' + (errors.telefono1 && 'is-invalid')} placeholder="Telefono principal" {...register("telefono1", { required: true })} />
                                                     <small>{errors.telefono1 && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label htmlFor="telefono2">Teléfono #2</label>
                                                     <input type="text" className="form-control" placeholder="Telefono secundario" {...register("telefono2")} />
@@ -211,7 +206,7 @@ export default function Registrarempresa() {
                                         </div>
 
                                         <div className="row">
-                                            <div className="col-sm-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label>Departamento</label>
                                                     <Select
@@ -227,7 +222,7 @@ export default function Registrarempresa() {
                                                     <small>{(selectedDepartament === null) && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
-                                            <div className="col-sm-6">
+                                            <div className="col-md-6 col-sm-12">
                                                 <div className="form-group">
                                                     <label>Ciudad</label>
                                                     <Select
@@ -245,20 +240,15 @@ export default function Registrarempresa() {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* /.card-body */}
                                     <div className="card-footer">
                                         <button type="submit" className="btn btn-primary btn-sm">Registrar</button>
                                     </div>
                                 </form>
                             </div>
-                            {/* /.card */}
                         </div>
-                        {/* /.col */}
                     </div>
-                    {/* /.timeline */}
-                </div>{/* /.container-fluid */}
+                </div>
             </div>
-            {/* /.content-header */}
         </div>
     )
 }
