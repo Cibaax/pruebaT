@@ -31,12 +31,10 @@ export default function DefaultLayout() {
                 location.href = '/login'
             })
 
-        if (steps.length === 0) {
-            axiosClient.get('/steps/get')
-                .then(({ data }) => {
-                    setSteps(data)
-                })
-        }
+        axiosClient.get('/steps/get')
+            .then(({ data }) => {
+                setSteps(data)
+            })
 
         setTimeout(() => {
             setIsLoading(false);
