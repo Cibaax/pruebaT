@@ -4,7 +4,7 @@ import axiosClient from "../axios-client.js";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 
 export default function DefaultLayout() {
-    const { user, token, setUser, setToken, steps, setSteps, baseUrl, isLoading, setIsLoading } = useStateContext()
+    const { user, token, setUser, setToken, steps, setSteps, baseUrl, isLoading, setIsLoading, refreshSteps } = useStateContext()
 
     if (!token) {
         return <Navigate to="/login" />
@@ -22,6 +22,8 @@ export default function DefaultLayout() {
     }
 
     useEffect(() => {
+        refreshSteps()
+
         axiosClient.get('/user')
             .then(({ data }) => {
                 setUser(data)
@@ -29,10 +31,6 @@ export default function DefaultLayout() {
                 onLogout()
             });
 
-        axiosClient.get('/steps/get')
-            .then(({ data }) => {
-                setSteps(data)
-            })
 
         setTimeout(() => {
             setIsLoading(false);

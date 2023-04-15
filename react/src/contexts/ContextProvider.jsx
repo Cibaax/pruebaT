@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import axiosClient from '../axios-client';
 
 const StateContext = createContext({
     currentUser: null,
@@ -22,6 +23,13 @@ export const ContextProvider = ({ children }) => {
         }
     }
 
+    const refreshSteps = () => {
+        axiosClient.get('/steps/get')
+            .then(({ data }) => {
+                setSteps(data)
+            })
+    }
+
     return (
         <StateContext.Provider value={{
             user,
@@ -32,7 +40,8 @@ export const ContextProvider = ({ children }) => {
             setSteps,
             baseUrl,
             isLoading,
-            setIsLoading
+            setIsLoading,
+            refreshSteps
         }}>
             {children}
         </StateContext.Provider>
