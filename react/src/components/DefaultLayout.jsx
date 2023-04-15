@@ -12,14 +12,13 @@ export default function DefaultLayout() {
 
     const pathname = window.location.pathname
 
-    const onLogout = (ev) => {
+    const onLogout = async (ev) => {
         ev.preventDefault()
 
-        axiosClient.post('/logout')
-            .then(() => {
-                setUser({})
-                setToken(null)
-            })
+        await axiosClient.post('/logout')
+        setUser({})
+        setToken(null)
+        location.href = '/login'
     }
 
     useEffect(() => {
@@ -28,8 +27,7 @@ export default function DefaultLayout() {
                 setUser(data)
             }).catch(function (error) {
                 onLogout()
-                location.href = '/login'
-            })
+            });
 
         axiosClient.get('/steps/get')
             .then(({ data }) => {

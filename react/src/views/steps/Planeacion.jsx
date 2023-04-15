@@ -7,7 +7,7 @@ export default function Planeacion({ time_line }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [ciudades, setCiudades] = useState(false)
     const [selectedCiudad, setSelectedCiudad] = useState({})
-    const time_line_id = time_line?.step?.id;
+    const time_line_id = time_line?.id;
     const onSubmit = payload => {
         payload.ciudad = selectedCiudad?.value;
         payload.cuerpo_acta = time_line?.step?.descripcion;
