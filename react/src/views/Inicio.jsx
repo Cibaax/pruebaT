@@ -3,10 +3,10 @@ import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Inicio() {
-    const [empresa, setEmpresa] = useState(false)
+    const [empresa, setEmpresa] = useState(null)
     const { steps } = useStateContext()
 
-    if (!empresa) {
+    if (empresa === null) {
         axiosClient.get('/compania/show')
             .then(({ data }) => {
                 setEmpresa(data)
@@ -71,24 +71,13 @@ export default function Inicio() {
 
     return (
         <div>
-
-            {/* Content Header (Page header) */}
             <div className="content-header">
                 <div className="container-fluid">
                     <div className="row mb-2">
-                        <div className="col-sm-6">
-                            <h1 className="m-0">{!empresa ? 'Bienvenido(a)' : 'Línea de tiempo del proceso - Nivel ' + empresa.nivel}</h1>
-                        </div>{/* /.col */}
-                        <div className="col-sm-6">
-                            <ol className="breadcrumb float-sm-right">
-                                <li className="breadcrumb-item">Inicio</li>
-                            </ol>
-                        </div>{/* /.col */}
-                    </div>{/* /.row */}
-                    {/* Timelime example  */}
+                        <h1 className="m-0">{!empresa ? 'Bienvenido(a)' : 'Línea de tiempo del proceso - Nivel ' + empresa.nivel}</h1>
+                    </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {/* The time line */}
                             <div className="timeline">
 
                                 {empresa &&
@@ -96,7 +85,6 @@ export default function Inicio() {
                                         <span className="bg-info">{empresa.label_fecha}</span>
                                     </div>
                                 }
-
 
                                 <PreEmpresa />
                                 <Pasos />
@@ -106,12 +94,9 @@ export default function Inicio() {
                                 </div>
                             </div>
                         </div>
-                        {/* /.col */}
                     </div>
-                    {/* /.timeline */}
-                </div>{/* /.container-fluid */}
+                </div>
             </div>
-            {/* /.content-header */}
         </div>
     )
 }

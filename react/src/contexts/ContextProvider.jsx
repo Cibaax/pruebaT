@@ -10,8 +10,9 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState({});
     const [steps, setSteps] = useState([]);
-    const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+    const [isLoading, setIsLoading] = useState(true);
     const baseUrl = window.location.origin.toString();
+    const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
     const setToken = (token) => {
         _setToken(token)
         if (token) {
@@ -29,7 +30,9 @@ export const ContextProvider = ({ children }) => {
             setToken,
             steps,
             setSteps,
-            baseUrl
+            baseUrl,
+            isLoading,
+            setIsLoading
         }}>
             {children}
         </StateContext.Provider>

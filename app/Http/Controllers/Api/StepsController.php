@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\leader_proceedings;
+use App\Models\steps_data;
 use App\Models\time_lines;
 use App\Models\steps as StepModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Auth;
+use Log;
 
 class StepsController extends Controller
 {
@@ -59,24 +60,18 @@ class StepsController extends Controller
         return $time_lines_ar;
     }
 
-    function saveStep(request $request, $step_id)
+    function saveStep(request $request, $timeline_id)
     {
-        $leader_proceedings = new leader_proceedings();
-        $leader_proceedings->ciudad = $request->ciudad;
-        $leader_proceedings->fecha_acta = $request->fecha;
-        $leader_proceedings->destinatario = $request->destinatario;
-        $leader_proceedings->cargo = $request->cargo;
-        $leader_proceedings->cuerpo_acta = $request->cuerpo_acta;
-        $leader_proceedings->users_id = Auth::id();
-        $leader_proceedings->save();
+        if ($timeline = time_lines::find($timeline_id)) {
+            $steps_data = new steps_data();
+            $steps_data->payload = json_encode($request->payload);
+            $steps_data->users_id = Auth::id();
+            $steps_data->steps_id = $timeline->step->id;
+            $steps_data->save();
 
-        $step = time_lines::find([
-            'steps_id' => $step_id,
-            'users_id' => Auth::id(),
-        ])->first();
-
-        $step->fecha_finalizacion = Carbon::now();
-        $step->estado = 3;
-        $step->save();
+            $timeline->fecha_finalizacion = Carbon::now();
+            $timeline->estado = 3;
+            $timeline->save();
+        }
     }
 }

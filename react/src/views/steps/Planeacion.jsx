@@ -3,24 +3,32 @@ import Select from 'react-select';
 import axiosClient from '../../axios-client'
 import { useForm } from "react-hook-form";
 
-export default function Step2({ time_line }) {
+export default function Planeacion({ time_line }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [ciudades, setCiudades] = useState(null)
+    const [ciudades, setCiudades] = useState(false)
     const [selectedCiudad, setSelectedCiudad] = useState({})
-
+    const time_line_id = time_line?.step?.id;
     const onSubmit = payload => {
         payload.ciudad = selectedCiudad?.value;
-
-        axiosClient.post('/steps/1/update', payload)
-            .then(() => {
-                location.href = 'inicio';
-            });
+        payload.cuerpo_acta = time_line?.step?.descripcion;
+        if (time_line_id) {
+            axiosClient.post(`/steps/${time_line_id}/update`, {
+                payload: payload
+            })
+                .then((_data) => {
+                    location.href = 'inicio';
+                });
+        }
     };
 
-    if (!ciudades) {
+    if (ciudades === false) {
+        setCiudades(null)
         axiosClient.get('/ciudades/all')
-            .then(({ data }) => {
-                setCiudades(data)
+            .then(async ({ data }) => {
+                let _ciudades = await data.map((ciudad) => {
+                    return { value: ciudad.label, label: ciudad.label }
+                })
+                setCiudades(_ciudades)
             })
     }
 
@@ -55,7 +63,6 @@ export default function Step2({ time_line }) {
                                     </div>
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)}>
-                                    <input type="hidden" value={'comite'} {...register("cuerpo_acta", { required: true })} />
                                     <div className="card-body">
                                         <div className="row">
                                             <div className="col-6">
@@ -77,7 +84,7 @@ export default function Step2({ time_line }) {
                                             <div className="col-6">
                                                 <div className="form-group">
                                                     <label htmlFor="fechaDocumento">Fecha en Documento</label>
-                                                    <input type="date" className="form-control" id="fechaDocumento" placeholder="Fecha" {...register("fecha", { required: true })} />
+                                                    <input type="date" className="form-control" id="fechaDocumento" placeholder="Fecha" {...register("fecha_acta", { required: true })} />
                                                 </div>
                                             </div>
                                         </div>

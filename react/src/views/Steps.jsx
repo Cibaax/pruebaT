@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
-import Step1 from "./steps/1";
-import Step2 from "./steps/2";
+import Planeacion from "./steps/Planeacion";
+import Step4 from "./steps/4";
 
 export default function Steps() {
     const { id } = useParams()
     const { steps } = useStateContext()
 
     let components = {
-        1: Step1,
-        2: Step2,
-        // 3: Step3,
-        // 4: Step4,
-        // 5: Step5,
+        1: Planeacion,
+        2: Planeacion,
+        3: Planeacion,
+        4: Step4,
+        5: Planeacion,
         // 6: Step6,
         // 7: Step7,
         // 8: Step8,
@@ -34,6 +34,10 @@ export default function Steps() {
         // 24: Step24
     };
 
-    const Step = components[id || 1];
-    return <Step time_line={steps[id - 1] ?? null} />
+    const time_line = steps[id - 1] ?? null
+    if (time_line && time_line.estado === 3) location.href = '/inicio'
+    if (time_line) {
+        const Step = components[id || 1] ?? null;
+        return <Step time_line={time_line} />
+    }
 }

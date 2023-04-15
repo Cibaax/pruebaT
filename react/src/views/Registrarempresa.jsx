@@ -157,28 +157,28 @@ export default function Registrarempresa() {
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label htmlFor="vehiculosPropios">Vehículos propios</label>
-                                                    <input type="number" className={'form-control ' + (errors.vehiculosPropios && 'is-invalid')} value="0" {...register("vehiculosPropios", { required: true })} />
+                                                    <input type="number" className={'form-control ' + (errors.vehiculosPropios && 'is-invalid')} placeholder="0" {...register("vehiculosPropios", { required: true })} />
                                                     <small>{errors.vehiculosPropios && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label htmlFor="vehiculosContratados">Veh. contratados o administrados</label>
-                                                    <input type="number" className={'form-control ' + (errors.vehiculosContratados && 'is-invalid')} value="0" {...register("vehiculosContratados", { required: true })} />
+                                                    <input type="number" className={'form-control ' + (errors.vehiculosContratados && 'is-invalid')} placeholder="0" {...register("vehiculosContratados", { required: true })} />
                                                     <small>{errors.vehiculosContratados && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label htmlFor="conductoresPropios">Conductores propios</label>
-                                                    <input type="number" className={'form-control ' + (errors.conductoresPropios && 'is-invalid')} value="0" {...register("conductoresPropios", { required: true })} />
+                                                    <input type="number" className={'form-control ' + (errors.conductoresPropios && 'is-invalid')} placeholder="0" {...register("conductoresPropios", { required: true })} />
                                                     <small>{errors.conductoresPropios && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
                                             <div className="col-sm-3">
                                                 <div className="form-group">
                                                     <label htmlFor="conductoresContratados">Conductores contratados</label>
-                                                    <input type="number" className={'form-control ' + (errors.conductoresContratados && 'is-invalid')} value="0" {...register("conductoresContratados", { required: true })} />
+                                                    <input type="number" className={'form-control ' + (errors.conductoresContratados && 'is-invalid')} placeholder="0" {...register("conductoresContratados", { required: true })} />
                                                     <small>{errors.conductoresContratados && 'Este campo es requerido'}</small>
                                                 </div>
                                             </div>
