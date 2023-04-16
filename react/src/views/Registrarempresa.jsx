@@ -16,6 +16,7 @@ export default function Registrarempresa() {
         axiosClient.post('/compania/create', payload)
             .then(({ data }) => {
                 setSteps(data)
+                location.href = 'inicio';
             });
     };
 
