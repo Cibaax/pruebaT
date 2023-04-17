@@ -18,7 +18,7 @@
     align-items: center;
     position: fixed;
     background: rgba(0, 0, 0, 0.834);
-    z-index: 1;
+    z-index: 999;
 }
 
 .spinner {
@@ -38,4 +38,8 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.custom-file-input:lang(es)~.custom-file-label::after {
+    content: "Cargar";
 }

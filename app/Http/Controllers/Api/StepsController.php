@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Auth;
-use Log;
 
 class StepsController extends Controller
 {
@@ -75,5 +74,56 @@ class StepsController extends Controller
         }
 
         return $this->getActualStep();
+    }
+
+    public function processData(Request $request, $timeline_id)
+    {
+        if ($csv = $request->file) {
+            $conductores = [];
+            if (($open = fopen($csv->path(), "r")) !== FALSE) {
+                $first = true;
+                while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
+                    if (!$first) {
+                        $conductores[] = $data;
+                    }
+                    $first = false;
+                }
+                fclose($open);
+            }
+
+            if ($timeline = time_lines::find($timeline_id)) {
+                $steps_data = new steps_data();
+                $steps_data->payload = json_encode([
+                    "conductores" => $conductores
+                ]);
+                $steps_data->users_id = Auth::id();
+                $steps_data->steps_id = $timeline->step->id;
+                $steps_data->save();
+            }
+
+            return $steps_data;
+        }
+    }
+
+    public function validate5Step(Request $request, $timeline_id)
+    {
+        if ($timeline = time_lines::find($timeline_id)) {
+            $step_data = steps_data::where("steps_id", $timeline->step->id)->where("users_id", Auth::id())->first();
+
+            return $step_data ?? null;
+        }
+    }
+
+    public function updateConductores(Request $request, $timeline_id)
+    {
+        if ($timeline = time_lines::find($timeline_id)) {
+            $step_data = steps_data::where("steps_id", $timeline->step->id)->where("users_id", Auth::id())->first();
+            $step_data->payload = json_encode([
+                "conductores" => $request->payload
+            ]);
+            $step_data->save();
+
+            return $step_data ?? null;
+        }
     }
 }

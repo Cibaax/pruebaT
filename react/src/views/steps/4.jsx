@@ -168,9 +168,9 @@ export default function Step4({ time_line }) {
                                                                         PESV.
                                                                     </td>
                                                                     <td>
-                                                                        <select className="form-control">
+                                                                        <select className="form-control" {...register("h", { required: true })}>
+                                                                            <option selected={true}>NO</option>
                                                                             <option>SI</option>
-                                                                            <option>NO</option>
                                                                         </select>
                                                                     </td>
                                                                     <td>Política y objetivos gerenciales relacionados con la SV.</td>
