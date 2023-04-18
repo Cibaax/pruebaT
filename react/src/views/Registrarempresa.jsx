@@ -8,6 +8,8 @@ export default function Registrarempresa() {
     const { steps, setSteps } = useStateContext()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = payload => {
+        if (!isValidNit) return false
+
         payload.actividadP = actividadPrincipal?.value;
         payload.actividadS = actividadSecundaria?.value;
         payload.departamento = selectedDepartament?.value;
@@ -27,7 +29,22 @@ export default function Registrarempresa() {
     const [selectedDepartament, setSelectedDepartament] = useState({})
     const [actividadPrincipal, setActividadPrincipal] = useState(null)
     const [actividadSecundaria, setActividadSecundaria] = useState(null)
+    const [isValidNit, setIsValidNit] = useState(false)
     const [empresa, setEmpresa] = useState(null)
+
+    const validarNit = async (e) => {
+        const nit = e?.target?.value;
+        if (nit.length > 3) {
+            await axiosClient.get('/compania/validate/'+nit)
+                .then(({ data }) => {
+                    if(data) {
+                        setIsValidNit(true)
+                    } else {
+                        setIsValidNit(false)
+                    }
+                })
+        }
+    }
 
     if (empresa == null) {
         axiosClient.get('/compania/show')
@@ -92,8 +109,9 @@ export default function Registrarempresa() {
                                                 <div className="col-sm-12">
                                                     <div className="form-group">
                                                         <label htmlFor="nit">NIT</label>
-                                                        <input type="text" className={'form-control ' + (errors.nit && 'is-invalid')} placeholder="Nit" {...register("nit", { required: true })} />
+                                                        <input onBlurCapture={(e) => validarNit(e)} type="text" className={'form-control ' + (errors.nit && 'is-invalid')} placeholder="Nit" {...register("nit", { required: true })} />
                                                         <small>{errors.nit && 'Este campo es requerido'}</small>
+                                                        <small>{!isValidNit && 'Este campo debe ser unico'}</small>
                                                     </div>
                                                 </div>
 
