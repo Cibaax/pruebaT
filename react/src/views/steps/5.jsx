@@ -2,8 +2,10 @@ import { useState } from 'react'
 import Select from 'react-select';
 import axiosClient from '../../axios-client'
 import { useForm } from "react-hook-form";
+import { useStateContext } from '../../contexts/ContextProvider';
 
 export default function Step5({ time_line }) {
+    const { setSteps } = useStateContext()
     const [internalIsLoading, setInternalIsLoading] = useState(true);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const time_line_id = time_line?.id;
@@ -13,9 +15,9 @@ export default function Step5({ time_line }) {
     const [conductorSeleccionado, setConductorSeleccionado] = useState(null);
     const conductoresPendientes = conductores.filter((conductor) => {
         return !('encuesta' in conductor)
-    }).map((conductor, key) => {
+    }).map((conductor) => {
         return {
-            value: key,
+            value: conductor.cedula,
             label: conductor.nombre,
         }
     }) ?? [];
@@ -56,8 +58,8 @@ export default function Step5({ time_line }) {
     };
 
     const onSubmit2 = async (payload) => {
-        await setConductores(conductores?.map((cond, key) => {
-            if (key === conductorSeleccionado?.value) {
+        await setConductores(conductores?.map((cond) => {
+            if (cond.cedula == conductorSeleccionado?.value) {
                 cond.encuesta = payload
                 setConductorSeleccionado(null)
             }
@@ -65,9 +67,21 @@ export default function Step5({ time_line }) {
             return cond
         }))
 
-        await axiosClient.post(`/steps/${time_line_id}/update_conductores`, {
-            payload: conductores
-        })
+        if (conductores.filter((cond) => !('encuesta' in cond)).length > 0) {
+            await axiosClient.post(`/steps/${time_line_id}/update_conductores`, {
+                payload: conductores
+            })
+        } else {
+            await axiosClient.post(`/steps/${time_line_id}/update`, {
+                payload: {
+                    conductores: conductores
+                }
+            })
+                .then(({ data }) => {
+                    setSteps(data)
+                    location.href = 'inicio';
+                });
+        }
     }
 
     const checkLevel = () => {
@@ -79,6 +93,8 @@ export default function Step5({ time_line }) {
                         setInternalIsLoading(false)
                     } else {
                         let conductores = await JSON.parse(data.payload).conductores.map((row) => {
+                            if (typeof row === 'object') return row
+
                             if (
                                 row[1] == '' || row[1] == undefined ||
                                 row[0] == '' || row[0] == undefined

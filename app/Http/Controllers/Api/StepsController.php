@@ -62,7 +62,10 @@ class StepsController extends Controller
     function saveStep(request $request, $timeline_id)
     {
         if ($timeline = time_lines::find($timeline_id)) {
-            $steps_data = new steps_data();
+            if (!$steps_data = steps_data::where("steps_id", $timeline->step->id)->where("users_id", Auth::id())->first()) {
+                $steps_data = new steps_data();
+            }
+
             $steps_data->payload = json_encode($request->payload);
             $steps_data->users_id = Auth::id();
             $steps_data->steps_id = $timeline->step->id;
