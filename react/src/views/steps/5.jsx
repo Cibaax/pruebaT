@@ -332,6 +332,318 @@ export default function Step5({ time_line }) {
                                                                             </select>
                                                                         </td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <td>13.RESPETA LAS SEÑALES DE CEDA EL PASO Y SEMÁFOROS
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("semaforos", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>14. REDUCE LA VELOCIDAD EN LA INTERSECCIÓN, AUN CUANDO TIENE EL DERECHO DE PASO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("velocidad_interseccion", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>15. EXCEDE LOS LÍMITES DE VELOCIDAD ESTABLECIDOS POR LA EMPRESA (ALERTAS DE GPS)
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("limites_velocidad", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>16. CONDUCE CON SUEÑO, FATIGA O CANSANCIO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("fatiga", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>17. USA EL CELULAR U OTROS DISPOSITIVOS DISTRACTORES MIENTRAS CONDUCE
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("celular", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>18. HACE LA REVISIÓN PRE-OPERACIONAL DIARIA DEL VEHÍCULO A CONCIENCIA, ANTES DE INICIAR SU JORNADA DE CONDUCCIÓN
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("revision", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>19. CUMPLE CON EL DÍA DE DESCANSO A LA SEMANA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("dia_descanso", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>20. ALGUNA VEZ LOS PASAJEROS LE HAN PEDIDO QUE INCUMPLA LAS NORMAS DE SEGURIDAD PARA LLEVARLOS A SU DESTINO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("incumplir_normas", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>21. SE INFORMA CON ANTICIPACIÓN SOBRE LOS RIESGOS DE LA RUTA POR DONDE VA A TRANSITAR A SU DESTINO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("riesgos_ruta", { required: true })}>
+                                                                                <option>Nunca</option>
+                                                                                <option>Casi nunca</option>
+                                                                                <option>Algunas veces</option>
+                                                                                <option>Casi siempre</option>
+                                                                                <option>Siempre</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>22. IDONEIDAD DE LOS CONDUCTORES DE LA EMPRESA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("idoneidad", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>23. CONDICIONES DEL TERRENO EN LAS VÍAS DONDE CIRCULA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("terreno", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>24. AUSENCIA DE SEÑALIZACIÓN VIAL EN LAS VÍAS DONDE TRANSITA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("ausencia", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>25. CONDICIONES GEOMÉTRICAS DE LAS VÍAS POR DONDE TRANSITA (RADIOS DE GIRO EN CURVAS, PERALTES, PENDIENTES, ETC.)
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("geometricas", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>26. ESTADO MECÁNICO DEL VEHÍCULO QUE OPERA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("estado_mecanico", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>27. TIEMPOS JORNADAS DE CONDUCCIÓN Y DESCANSO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("jornadas", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>28. SEÑALIZACIÓN Y ORDEN DE LA OPERACIÓN INTERNA EN LAS INSTALACIONES DE LOS CLIENTES DONDE SE PRESTA EL SERVICIO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("orden_operacion", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>29. PRESENCIA DE ANIMALES EN LA VÍA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("animales", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>30. MOTORIZADOS, PEATONES O BICIUSUARIOS IMPRUDENTES
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("imprudentes", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>31. CONTROLES A LOS EXCESOS DE VELOCIDAD
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("excesos", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>32. CONTROLES A LOS ESTADOS DE ALCOHOLISMO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("alcoholismo", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>33. COMPROMISO DE LOS COMPAÑEROS CON LA SEGURIDAD DEL SERVICIO
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("seguridad_servicio", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>34. RETROALIMENTACIÓN DE LOS JEFES
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("retroalimentacion", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>35. PARTICIPACIÓN EN ACTIVIDADES DE SENSIBILIZACIÓN
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("sensibilizacion", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>36. CONOCIMIENTO Y RESPETO DE LAS NORMAS DE SEGURIDAD POR PARTE DE LOS PASAJEROS O USUARIOS DE LA RUTA
+                                                                        </td>
+                                                                        <td>
+                                                                            <select className="form-control" {...register("normas_seguridad", { required: true })}>
+                                                                                <option>Muy bajo</option>
+                                                                                <option>Medio bajo</option>
+                                                                                <option>Medio</option>
+                                                                                <option>Medio alto</option>
+                                                                                <option>Alto</option>
+                                                                            </select>
+                                                                        </td>
+                                                                    </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
