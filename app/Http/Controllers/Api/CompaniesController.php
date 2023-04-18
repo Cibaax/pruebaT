@@ -49,4 +49,12 @@ class CompaniesController extends Controller
         $steps = new StepsController();
         return $steps->getActualStep();
     }
+
+    public function validateNit(Request $request, $nit)
+    {
+        $compania = companies::where('nit', $nit)->first();
+        if ($compania) return false;
+
+        return true;
+    }
 }

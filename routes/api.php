@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/steps/{id}/update_conductores', [StepsController::class, 'updateConductores']);
     Route::get('/compania/show', [CompaniesController::class, 'show']);
     Route::post('/compania/create', [CompaniesController::class, 'create']);
+    Route::get('/compania/validate/{nit}', [CompaniesController::class, 'validateNit']);
 
 
     Route::get('/user', function (Request $request) {
