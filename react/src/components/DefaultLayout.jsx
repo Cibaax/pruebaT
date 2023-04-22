@@ -34,7 +34,7 @@ export default function DefaultLayout() {
 
         setTimeout(() => {
             setIsLoading(false);
-        }, 1000);
+        }, 3000);
     }, [])
 
     return (

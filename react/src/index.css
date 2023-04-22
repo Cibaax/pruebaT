@@ -43,3 +43,9 @@
 .custom-file-input:lang(es)~.custom-file-label::after {
     content: "Cargar";
 }
+
+.table-w-input {
+    border: 0;
+    width: 100%;
+    height: 100%;
+}

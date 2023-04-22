@@ -3,6 +3,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import Planeacion from "./steps/Planeacion";
 import Step4 from "./steps/4";
 import Step5 from "./steps/5";
+import Step6 from "./steps/6";
 
 export default function Steps() {
     const { id } = useParams()
@@ -14,6 +15,7 @@ export default function Steps() {
         3: Planeacion,
         4: Step4,
         5: Step5,
+        6: Step6,
         // 6: Step6,
         // 7: Step7,
         // 8: Step8,

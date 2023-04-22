@@ -23,8 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/steps/get', [StepsController::class, 'getActualStep']);
     Route::post('/steps/{id}/update', [StepsController::class, 'saveStep']);
     Route::post('/steps/{id}/process_data', [StepsController::class, 'processData']);
-    Route::get('/steps/{id}/validate_step', [StepsController::class, 'validate5Step']);
+    Route::get('/steps/{id}/validate_step', [StepsController::class, 'validateStep']);
     Route::post('/steps/{id}/update_conductores', [StepsController::class, 'updateConductores']);
+    Route::get('/steps/{id}/exportar61', [StepsController::class, 'exportarEncuesta61']);
     Route::get('/compania/show', [CompaniesController::class, 'show']);
     Route::post('/compania/create', [CompaniesController::class, 'create']);
     Route::get('/compania/validate/{nit}', [CompaniesController::class, 'validateNit']);
