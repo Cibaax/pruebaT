@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\CustomClasses\DocTemplates;
 use App\Models\steps_data;
 use App\Models\time_lines;
+use App\Models\drivers;
 use App\Models\steps as StepModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -93,11 +94,29 @@ class StepsController extends Controller
     {
         if ($csv = $request->file) {
             $conductores = [];
+            // $csv->store('public');
             if (($open = fopen($csv->path(), "r")) !== FALSE) {
                 $first = true;
                 while (($data = fgetcsv($open, 1000, ",")) !== FALSE) {
                     if (!$first) {
                         $conductores[] = $data;
+                        $drivers = new drivers();
+                        $drivers->nombre_completo = $data[0];
+                        $drivers->numero_identificacion = $data[1];
+                        $drivers->ciudad_expedicion = $data[2];
+                        $drivers->fecha_nacimiento = $data[3];
+                        $drivers->genero = $data[4];
+                        $drivers->edad = $data[5];
+                        $drivers->experiencia_especifica = $data[6];
+                        $drivers->empresa_usuaria = $data[7];
+                        $drivers->cargo = $data[8];
+                        $drivers->escolaridad = $data[9];
+                        $drivers->tipo_contrato = $data[10];
+                        $drivers->zona_desplazamiento = $data[11];
+                        $drivers->inscripcion_runt = $data[12];
+                        $drivers->numero_inscripcion = $data[13];
+                        $drivers->fecha_ingreso_empresa = $data[14];
+                        $drivers->save();
                     }
                     $first = false;
                 }

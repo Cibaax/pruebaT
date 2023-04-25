@@ -77,7 +77,7 @@ export default function DefaultLayout() {
                                 <a href="#" className="nav-link">
                                     <i className="nav-icon fa fa-th-large" />
                                     <p>
-                                        Módulos PESV
+                                        Fases PESV
                                         <i className="right fas fa-angle-left" />
                                     </p>
                                 </a>

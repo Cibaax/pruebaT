@@ -101,10 +101,18 @@ export default function Planificacion() {
                                     </div>
                                     <div id="collapseFive" className="collapse" data-parent="#accordion">
                                         <div className="card-body">
-                                            Si desea xxxxxxxxx haga clic en el botón.
+                                            Si desea ver los datos cargados haga clic en el botón correspondiente.
                                         </div>
                                         <div className="card-footer">
-                                            <a href="/actalideres" className="btn btn-primary btn-sm">XXXXXXXXXX</a>
+                                            <a href="/conductores" className="btn btn-primary btn-sm">Conductores</a>
+                                            &nbsp;
+                                            <a href="/inicio" className="btn btn-primary btn-sm">Contratistas</a>
+                                            &nbsp;
+                                            <a href="/inicio" className="btn btn-primary btn-sm">Rutas</a>
+                                            &nbsp;
+                                            <a href="/inicio" className="btn btn-primary btn-sm">Sedes</a>
+                                            &nbsp;
+                                            <a href="/inicio" className="btn btn-primary btn-sm">Vehículos</a>
                                         </div>
                                     </div>
                                 </div>

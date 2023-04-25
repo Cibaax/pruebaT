@@ -149,6 +149,18 @@ export default function Step5({ time_line }) {
                                                         <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
                                                             <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Conductores
                                                         </a>
+                                                        <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
+                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Contratistas
+                                                        </a>
+                                                        <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
+                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Rutas
+                                                        </a>
+                                                        <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
+                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Sedes
+                                                        </a>
+                                                        <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
+                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Vehículos
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -73,22 +73,22 @@ export default function Step6({ time_line }) {
                                     <div className="card-header p-0 pt-1">
                                         <ul className="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                                             <li className="nav-item">
-                                                <a className="nav-link" id="custom-tabs-one-1-tab" data-toggle="pill" href="#custom-tabs-one-1" role="tab" aria-controls="custom-tabs-one-1" aria-selected="false">Paso #6.1</a>
+                                                <a className="nav-link active" id="custom-tabs-one-1-tab" data-toggle="pill" href="#custom-tabs-one-1" role="tab" aria-controls="custom-tabs-one-1" aria-selected="true">Paso #6.1</a>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link active" id="custom-tabs-one-2-tab" data-toggle="pill" href="#custom-tabs-one-2" role="tab" aria-controls="custom-tabs-one-2" aria-selected="false">Paso #6.2</a>
+                                                <a className="nav-link" id="custom-tabs-one-2-tab" data-toggle="pill" href="#custom-tabs-one-2" role="tab" aria-controls="custom-tabs-one-2" aria-selected="false">Paso #6.2</a>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" id="custom-tabs-one-3-tab" data-toggle="pill" href="#custom-tabs-one-3" role="tab" aria-controls="custom-tabs-one-3" aria-selected="true">Paso #6.3</a>
+                                                <a className="nav-link" id="custom-tabs-one-3-tab" data-toggle="pill" href="#custom-tabs-one-3" role="tab" aria-controls="custom-tabs-one-3" aria-selected="false">Paso #6.3</a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div className="card-body">
                                         <div className="tab-content" id="custom-tabs-one-tabContent">
-                                            <div className="tab-pane fade" id="custom-tabs-one-1" role="tabpanel" aria-labelledby="custom-tabs-one-1-tab" style={{ minHeight: "500px" }}>
+                                            <div className="tab-pane fade active show" id="custom-tabs-one-1" role="tabpanel" aria-labelledby="custom-tabs-one-1-tab" style={{ minHeight: "500px" }}>
                                                 <Base61 steps={steps} baseExportable={baseExportable} setBaseExportable={setBaseExportable} />
                                             </div>
-                                            <div className="tab-pane fade active show" id="custom-tabs-one-2" role="tabpanel" aria-labelledby="custom-tabs-one-2-tab" style={{ minHeight: "500px" }}>
+                                            <div className="tab-pane fade" id="custom-tabs-one-2" role="tabpanel" aria-labelledby="custom-tabs-one-2-tab" style={{ minHeight: "500px" }}>
                                                 <Editable62 newRow={newRow} eventosData={eventosData} setEventosData={setEventosData} />
                                             </div>
                                             <div className="tab-pane fade" id="custom-tabs-one-3" role="tabpanel" aria-labelledby="custom-tabs-one-3-tab" style={{ minHeight: "500px" }}>
