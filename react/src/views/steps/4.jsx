@@ -63,7 +63,7 @@ export default function Step4({ time_line }) {
                                                                         estratégica de la organización, buscando prevenir siniestros viales, reducir las muertes y
                                                                         disminuir el riesgo de lesiones o daños derivados de los siniestros viales.
                                                                     </td>
-                                                                    <td style={{ width: '7%' }}>
+                                                                    <td style={{ width: '12%' }}>
                                                                         <select className="form-control" {...register("a", { required: true })}>
                                                                             <option selected={true}>NO</option>
                                                                             <option>SI</option>

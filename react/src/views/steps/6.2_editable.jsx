@@ -43,6 +43,7 @@ const Editable62 = ({ newRow, eventosData, setEventosData }) => {
   return (
     <div>
       <div className="row">
+        <span className='bg-warning h6'>Referencia a Actores Viales</span>
         <div className="offset-11">
           <div className="btn-group">
             <button title='Agregar un item a la tabla' className='btn btn-success' onClick={addRow}><i className='fa fa-plus'></i></button>
@@ -55,14 +56,14 @@ const Editable62 = ({ newRow, eventosData, setEventosData }) => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Causa</th>
-            <th>Evento</th>
-            <th>Impacto</th>
-            <th className='th-rotation'>Conductor</th>
-            <th className='th-rotation'>Bici usuario</th>
-            <th className='th-rotation'>Motorizado</th>
-            <th className='th-rotation'>Peatón</th>
-            <th className='th-rotation'>Pasajero</th>
+            <th style={{width: 400}}>Causa</th>
+            <th style={{width: 400}}>Evento</th>
+            <th style={{width: 400}}>Impacto</th>
+            <th className='bg-warning'>Conductor</th>
+            <th className='bg-warning'>Bici usuario</th>
+            <th className='bg-warning'>Motorizado</th>
+            <th className='bg-warning'>Peatón</th>
+            <th className='bg-warning'>Pasajero</th>
             <th>Nivel de probabilidad</th>
             <th>Nivel de impacto</th>
             <th>Valoración del riesgo</th>

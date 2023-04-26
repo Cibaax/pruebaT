@@ -39,6 +39,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::get('/ciiu', [HelperController::class, 'ciiu']);
+Route::get('/drivers', [HelperController::class, 'drivers']);
 Route::get('/departamentos', [HelperController::class, 'departamentos']);
 Route::get('/ciudades/all', [HelperController::class, 'ciudades_all']);
 Route::get('/ciudades/{departamento_id}', [HelperController::class, 'ciudades']);

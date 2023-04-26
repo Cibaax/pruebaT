@@ -96,7 +96,6 @@ export default function Step6({ time_line }) {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
