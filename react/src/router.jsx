@@ -32,7 +32,7 @@ import Inicio8 from "./views/Inicio8.jsx";
 import Actalideres2 from "./views/Actalideres2.jsx";
 import Informemovilidad from "./views/Informemovilidad.jsx";
 import Steps from "./views/Steps.jsx";
-import Conductores from "./views/Conductores.jsx";
+import Colaboradores from "./views/Colaboradores.jsx";
 
 
 const router = createBrowserRouter([
@@ -93,8 +93,8 @@ const router = createBrowserRouter([
                 element: <Registrarempresa />
             },
             {
-                path: '/conductores',
-                element: <Conductores />
+                path: '/colaboradores',
+                element: <Colaboradores />
             },
             {
                 path: '/inicio2',

@@ -104,7 +104,7 @@ export default function Planificacion() {
                                             Si desea ver los datos cargados haga clic en el botón correspondiente.
                                         </div>
                                         <div className="card-footer">
-                                            <a href="/conductores" className="btn btn-primary btn-sm">Conductores</a>
+                                            <a href="/colaboradores" className="btn btn-primary btn-sm">Colaboradores</a>
                                             &nbsp;
                                             <a href="/inicio" className="btn btn-primary btn-sm">Contratistas</a>
                                             &nbsp;

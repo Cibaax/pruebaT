@@ -2,7 +2,7 @@ import React, { useState ,useEffect} from "react";
 import axiosClient from "../axios-client";
 
 
-export default function Conductores() {
+export default function Colaboradores() {
 
     
     const [drivers, setDriver] = useState([])
@@ -27,7 +27,7 @@ export default function Conductores() {
 
     
        
-        <table class="table">
+        <table className="table">
                             <script src="https://unpkg.com/axios/dist/axios.min.js"></script>                                                                       
         <thead>
           <tr>
