@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ciiu as CiiuModel;
 use App\Models\departments;
 use App\Models\cities;
+use App\Models\drivers;
 
 class HelperController extends Controller
 {
@@ -13,6 +14,13 @@ class HelperController extends Controller
     {
         return CiiuModel::all()->map(function ($_ciuu) {
             return ["value" => $_ciuu->id, "label" => "$_ciuu->codigo - $_ciuu->actividad"];
+        });
+    }
+
+    public function drivers()
+    {
+        return drivers::all()->map(function ($_drivers) {
+            return ["value" => $_drivers->nombre_completo, "label" => $_drivers->numero_identificacion,"label1" => $_drivers->empresa_usuaria, "fecha_nacimiento" => $_drivers->fecha_nacimiento, "genero" => $_drivers->genero, "edad" => $_drivers->edad];
         });
     }
 
