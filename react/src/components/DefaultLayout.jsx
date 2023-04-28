@@ -74,7 +74,7 @@ export default function DefaultLayout() {
                                 </a>
                             </li>
                             <li className="nav-item menu-is-opening menu-open">
-                                <a href="#" className="nav-link">
+                                <a className="nav-link">
                                     <i className="nav-icon fa fa-th-large" />
                                     <p>
                                         Fases PESV
@@ -84,32 +84,32 @@ export default function DefaultLayout() {
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
                                         <a href="/preparacion" className={`nav-link ${pathname == '/preparacion' ? "active" : ""}`}>
-                                            <i className="nav-icon fas fa-lg fa-building" />
-                                            <p>Preparación</p>
+                                            <i className="nav-icon fas fa-building fa-xs" />
+                                            <p className="small">Preparación</p>
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a href="/planificacion" className={`nav-link ${pathname == '/planificacion' ? "active" : ""}`}>
                                             <i className="nav-icon fa fa-vote-yea" />
-                                            <p>Planificación</p>
+                                            <p className="small">Planificación</p>
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a href="/implementacion" className={`nav-link ${pathname == '/implementacion' ? "active" : ""}`}>
                                             <i className="nav-icon fa fa-cogs" />
-                                            <p>Implementación</p>
+                                            <p className="small">Implementación</p>
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a href="/seguimiento" className={`nav-link ${pathname == '/seguimiento' ? "active" : ""}`}>
                                             <i className="nav-icon fa fa-eye" />
-                                            <p>Seguimiento</p>
+                                            <p className="small">Seguimiento</p>
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a href="/mejora" className={`nav-link ${pathname == '/mejora' ? "active" : ""}`}>
                                             <i className="nav-icon fa fa-check-square" />
-                                            <p>Mejora</p>
+                                            <p className="small">Mejora</p>
                                         </a>
                                     </li>
                                 </ul>

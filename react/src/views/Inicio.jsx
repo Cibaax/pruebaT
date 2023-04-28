@@ -233,11 +233,25 @@ export default function Inicio() {
                     </div>
                     <div className="card-footer">
                       <div className="text-right">
-                        <a
-                            href="/registrarempresa"
+                      <a
+                            href="/steps/5"
                             className="btn btn-sm btn-primary"
                         >
-                            <i className="fas fa-user" /> Ingresar
+                            6.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            6.2.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            6.2.2
                         </a>
                       </div>
                     </div>
@@ -260,11 +274,18 @@ export default function Inicio() {
                     </div>
                     <div className="card-footer">
                       <div className="text-right">
-                        <a
-                            href="/registrarempresa"
+                      <a
+                            href="/steps/5"
                             className="btn btn-sm btn-primary"
                         >
-                            <i className="fas fa-user" /> Ingresar
+                            7.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            7.2
                         </a>
                       </div>
                     </div>
@@ -282,6 +303,466 @@ export default function Inicio() {
                         <p className="text-md">
                           <br />
                           Programas de gestión de riesgos críticos y factores de desempeño
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #9</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Plan anual de trabajo
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #10</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Competencia y plan anual de formación
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #11</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Responsabilidades y comportamiento seguro
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            11.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            11.2
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            11.3
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            11.4
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #12</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Plan de preparación y respuesta ante emergencias vitales
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #13</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Investigación interna de siniestros
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #14</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Vías seguras administradas por la organización
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #15</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Planificación de desplazamientos laborales
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #16</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Inspección de vehículos y equipos
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #17</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Mantenimiento y control de vehículos
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #18</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Gestión de cambios y gestión de contratistas
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            18.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            18.2
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #19</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Archivos y retención documental
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #20</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Definición de indicadores
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #21</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Registro y análisis estadístico de accidentes de tránsito
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #22</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Auditoria Anual
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #23</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Mejora Continua, acciones preventivas y correctivas
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #24</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Mecanismos de comunicación
                         </p>
                       </div>
                     </div>
