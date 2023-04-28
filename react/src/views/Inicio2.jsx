@@ -1,82 +1,102 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Inicio2() {
-const [users, setUsers] = useState([]);
-const [loading, setLoading] = useState(false)
+    const [empresa, setEmpresa] = useState(null)
+    const { steps } = useStateContext()
 
+    if (empresa === null) {
+        axiosClient.get('/compania/show')
+            .then(({ data }) => {
+                setEmpresa(data)
+            })
+    }
+
+    const PreEmpresa = () => {
+        return (!empresa ? (
+            <div>
+                <i className="fas fa-user-check bg-blue" />
+                <div className="timeline-item">
+                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
+                    <div className="timeline-body bg-red">
+                        Haga clic en el siguiente botón para empezar a registrar los datos de la empresa.
+                    </div>
+                    <div className="timeline-footer bg-red">
+                        <a href="/registrarempresa" className="btn btn-primary btn-sm">Registrar</a>
+                    </div>
+                </div>
+            </div>
+        ) : (
+            <div>
+                <i className="fas fa-user-check bg-blue" />
+                <div className="timeline-item">
+                    <span className="time font-weight-bold">Finalizado el {empresa.fecha} <i className="fas fa-clock" /> {empresa.hora}</span>
+                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
+                    <div className="timeline-body bg-green pt-3 pb-3">
+                        Se ha registrado la información de la empresa '<strong>{empresa.razon_social}</strong>' con éxito
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+
+    const Pasos = () => {
+        return ((empresa && steps?.length > 0) &&
+            steps.map((line, key_line) => {
+                let color = line.estado === 3 ? 'bg-green' : 'bg-red';
+                let estado = line.estado === 3 ? 'Completado' : 'Pendiente';
+                return (
+                    <div key={key_line}>
+                        <i className="fas fa-user-check bg-blue" />
+                        <div className="timeline-item">
+                            {line.fecha_finalizacion &&
+                                <span className="time font-weight-bold">Finalizado el {line.fecha} <i className="fas fa-clock" /> {line.hora}</span>
+                            }
+                            <h3 className="timeline-header font-weight-bold">{line.step.fase} - Paso #{line.step.numero}</h3>
+                            <div className={"timeline-footer bg-red " + color}>
+                                {line.step.descripcion} <br /> <strong>Estado:</strong> {estado}
+                            </div>
+                            <div className={"timeline-footer bg-red " + color} hidden={line.estado === 3}>
+                                <a href={"/steps/" + line.step.numero} className="btn btn-primary btn-sm">Realizar este paso</a>
+                                &nbsp;&nbsp;
+                                <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        )
+    }
 
     return (
         <div>
-
-            {/* Content Header (Page header) */}
             <div className="content-header">
                 <div className="container-fluid">
                     <div className="row mb-2">
-                        <div className="col-sm-10">
-                            <h1 className="m-0">Línea de tiempo del proceso - Nivel Avanzado</h1>
-                        </div>{/* /.col */}
-                        <div className="col-sm-2">
-                            <ol className="breadcrumb float-sm-right">
-                                <li className="breadcrumb-item">Inicio</li>
-                            </ol>
-                        </div>{/* /.col */}
-                    </div>{/* /.row */}
-                    {/* Timelime example  */}
+                        <h1 className="m-0">{!empresa ? 'Bienvenido(a)' : 'Línea de tiempo del proceso - Nivel ' + empresa.nivel}</h1>
+                    </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {/* The time line */}
                             <div className="timeline">
-                                {/* timeline time label */}
-                                <div className="time-label">
-                                    <span className="bg-info">30 Marzo 2023</span>
-                                </div>
-                                {/* /.timeline-label */}
-                                {/* timeline item */}
-                                <div>
-                                    <i className="fas fa-user-check bg-blue" />
-                                    <div className="timeline-item">
-                                        <span className="time font-weight-bold">Finalizado 30/03/2023  <i className="fas fa-clock" />11:09</span>
-                                        <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
-                                        <div className="timeline-body bg-green">
-                                            Se ha registrado la información de la empresa con éxito
-                                        </div>
-                                        <div className="timeline-footer bg-green">
-                                            
-                                        </div>
+
+                                {empresa &&
+                                    <div className="time-label">
+                                        <span className="bg-info">{empresa.label_fecha}</span>
                                     </div>
-                                </div>
-                                {/* END timeline item */}
-                                
-                                {/* timeline item */}
-                                <div>
-                                    <i className="fas fa-user-check bg-blue" />
-                                    <div className="timeline-item">
-                                        <h3 className="timeline-header font-weight-bold">Planificación - Paso #1</h3>
-                                        <div className="timeline-body bg-red">
-                                            Haga clic en el siguiente botón para cargar el acta de asignación de líderes del PESV.
-                                        </div>
-                                        <div className="timeline-footer bg-red">
-                                            <a href="/actalideres" className="btn btn-primary btn-sm">Asignar Líderes</a>
-                                            &nbsp;&nbsp;
-                                            <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* END timeline item */}
-                                
+                                }
+
+                                <PreEmpresa />
+                                <Pasos />
+
                                 <div>
                                     <i className="fas fa-clock bg-gray" />
                                 </div>
                             </div>
                         </div>
-                        {/* /.col */}
                     </div>
-                    {/* /.timeline */}
-                </div>{/* /.container-fluid */}
+                </div>
             </div>
-            {/* /.content-header */}
         </div>
     )
 }

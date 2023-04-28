@@ -1,102 +1,302 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Inicio() {
-    const [empresa, setEmpresa] = useState(null)
-    const { steps } = useStateContext()
-
-    if (empresa === null) {
-        axiosClient.get('/compania/show')
-            .then(({ data }) => {
-                setEmpresa(data)
-            })
-    }
-
-    const PreEmpresa = () => {
-        return (!empresa ? (
-            <div>
-                <i className="fas fa-user-check bg-blue" />
-                <div className="timeline-item">
-                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
-                    <div className="timeline-body bg-red">
-                        Haga clic en el siguiente botón para empezar a registrar los datos de la empresa.
-                    </div>
-                    <div className="timeline-footer bg-red">
-                        <a href="/registrarempresa" className="btn btn-primary btn-sm">Registrar</a>
-                    </div>
-                </div>
+  const [empresa, setEmpresa] = useState(null)
+  const { steps } = useStateContext()
+  console.log(steps)
+  let colorEmpresa = steps[0]?.steps_id == 1 ? 'bg-green' : 'bg-red';
+  let colorLider = steps[1]?.steps_id == 2 ? 'bg-green' : 'bg-red';
+  let colorComite = steps[2]?.steps_id == 3 ? 'bg-green' : 'bg-red';
+  let colorPolitica = steps[3]?.steps_id == 4 ? 'bg-green' : 'bg-red';
+  return (
+    <div>
+      <div className="content-header">
+        <div className="container-fluid">
+          <div className="row mb-2">
+            <div className="col-sm-10">
+              <h1 className="m-0">
+                Módulos PESV - Nivel Avanzado
+              </h1>
             </div>
-        ) : (
-            <div>
-                <i className="fas fa-user-check bg-blue" />
-                <div className="timeline-item">
-                    <span className="time font-weight-bold">Finalizado el {empresa.fecha} <i className="fas fa-clock" /> {empresa.hora}</span>
-                    <h3 className="timeline-header font-weight-bold">Registro de la empresa</h3>
-                    <div className="timeline-body bg-green pt-3 pb-3">
-                        Se ha registrado la información de la empresa '<strong>{empresa.razon_social}</strong>' con éxito
-                    </div>
-                </div>
+            {/* /.col */}
+            <div className="col-sm-2">
+              <ol className="breadcrumb float-sm-right">
+                <li className="breadcrumb-item">Inicio</li>
+              </ol>
             </div>
-        ))
-    }
+            {/* /.col */}
+          </div>
+          {/* /.row */}
 
-    const Pasos = () => {
-        return ((empresa && steps?.length > 0) &&
-            steps.map((line, key_line) => {
-                let color = line.estado === 3 ? 'bg-green' : 'bg-red';
-                let estado = line.estado === 3 ? 'Completado' : 'Pendiente';
-                return (
-                    <div key={key_line}>
-                        <i className="fas fa-user-check bg-blue" />
-                        <div className="timeline-item">
-                            {line.fecha_finalizacion &&
-                                <span className="time font-weight-bold">Finalizado el {line.fecha} <i className="fas fa-clock" /> {line.hora}</span>
-                            }
-                            <h3 className="timeline-header font-weight-bold">{line.step.fase} - Paso #{line.step.numero}</h3>
-                            <div className={"timeline-footer bg-red " + color}>
-                                {line.step.descripcion} <br /> <strong>Estado:</strong> {estado}
-                            </div>
-                            <div className={"timeline-footer bg-red " + color} hidden={line.estado === 3}>
-                                <a href={"/steps/" + line.step.numero} className="btn btn-primary btn-sm">Realizar este paso</a>
-                                &nbsp;&nbsp;
-                                <a href="/siguientepaso" className="btn btn-primary btn-sm">Siguiente paso</a>
-                            </div>
-                        </div>
+          {/* Default box */}
+          <div className="card card-solid">
+            <div className="card-body pb-0">
+              <div className="row">
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0 lead">
+                      <i className="fas fa-lg fa-building" />
+                      &nbsp;&nbsp;
+                      <b>Registro de la empresa</b>
                     </div>
-                )
-            })
-        )
-    }
-
-    return (
-        <div>
-            <div className="content-header">
-                <div className="container-fluid">
-                    <div className="row mb-2">
-                        <h1 className="m-0">{!empresa ? 'Bienvenido(a)' : 'Línea de tiempo del proceso - Nivel ' + empresa.nivel}</h1>
+                    <div className={"card-body pt-0 " + colorEmpresa}>
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Datos de la empresa.
+                        </p>
+                      </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="timeline">
-
-                                {empresa &&
-                                    <div className="time-label">
-                                        <span className="bg-info">{empresa.label_fecha}</span>
-                                    </div>
-                                }
-
-                                <PreEmpresa />
-                                <Pasos />
-
-                                <div>
-                                    <i className="fas fa-clock bg-gray" />
-                                </div>
-                            </div>
-                        </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        { colorEmpresa == "bg-red" &&
+                        <a
+                          href="/registrarempresa"
+                          className="btn btn-sm btn-primary"
+                        >
+                          <i className="fas fa-user" /> Registrar Empresa
+                        </a>
+                        }
+                      </div>
                     </div>
+                  </div>
                 </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #1</b>
+                    </div>
+                    <div className={"card-body pt-0 " + colorLider}>
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Líder de diseño e implementación PESV
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                      { colorLider == "bg-red" &&
+                        <a
+                            href="/steps/1"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #2</b>
+                    </div>
+                    <div className={"card-body pt-0 " + colorComite}>
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Comité de seguridad vial
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                      { colorComite == "bg-red" &&
+                        <a
+                            href="/steps/2"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #3</b>
+                    </div>
+                    <div className={"card-body pt-0 " + colorPolitica}>
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Política de Seguridad Vial de la Organización
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                      { colorPolitica == "bg-red" &&
+                        <a
+                            href="/steps/3"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #4</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Liderazgo, compromiso y correspondencia del nivel directivo
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #5</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Diagnóstico
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #6</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Caracterización, evaluación y control de riesgos
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #7</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Objetivos y metas del PESV
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div className="card bg-light d-flex flex-fill">
+                    <div className="card-header border-bottom-0">
+                      <i className="fa fa-vote-yea" />
+                      &nbsp;&nbsp;
+                      <b>PASO #8</b>
+                    </div>
+                    <div className="card-body pt-0 bg-danger">
+                      <div className="row">
+                        <p className="text-md">
+                          <br />
+                          Programas de gestión de riesgos críticos y factores de desempeño
+                        </p>
+                      </div>
+                    </div>
+                    <div className="card-footer">
+                      <div className="text-right">
+                        <a
+                            href="/registrarempresa"
+                            className="btn btn-sm btn-primary"
+                        >
+                            <i className="fas fa-user" /> Ingresar
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            {/* /.card-body */}
+            <div className="card-footer">
+            </div>
+            {/* /.card-footer */}
+          </div>
+          {/* /.card */}
         </div>
-    )
+      </div>
+    </div>
+  );
 }

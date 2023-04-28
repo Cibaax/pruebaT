@@ -54,7 +54,7 @@ export default function DefaultLayout() {
                     {/* Sidebar user panel (optional) */}
                     <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div className="image">
-                            <img src={baseUrl + `/adminlte/dist/img/user2-160x160.jpg`} className="img-circle elevation-2" alt="User Image" />
+                            <img src={baseUrl + `/adminlte/dist/img/avatar5.png`} className="img-circle elevation-2" alt="" />
                         </div>
                         <div className="info">
                             <a href="#" className="d-block">{user.name}</a>
@@ -84,13 +84,13 @@ export default function DefaultLayout() {
                                 <ul className="nav nav-treeview">
                                     <li className="nav-item">
                                         <a href="/preparacion" className={`nav-link ${pathname == '/preparacion' ? "active" : ""}`}>
-                                            <i className="nav-icon fa fa-list-alt" />
+                                            <i className="nav-icon fas fa-lg fa-building" />
                                             <p>Preparación</p>
                                         </a>
                                     </li>
                                     <li className="nav-item">
                                         <a href="/planificacion" className={`nav-link ${pathname == '/planificacion' ? "active" : ""}`}>
-                                            <i className="nav-icon fa fa-columns" />
+                                            <i className="nav-icon fa fa-vote-yea" />
                                             <p>Planificación</p>
                                         </a>
                                     </li>
@@ -191,11 +191,6 @@ export default function DefaultLayout() {
                             </a>
                             <div className="dropdown-divider" />
                         </div>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" data-widget="fullscreen" href="#" role="button">
-                            <i className="fas fa-expand-arrows-alt" />
-                        </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
