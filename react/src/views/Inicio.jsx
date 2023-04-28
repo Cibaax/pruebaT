@@ -11,6 +11,7 @@ export default function Inicio() {
   let colorLider = steps[1]?.steps_id == 2 ? 'bg-green' : 'bg-red';
   let colorComite = steps[2]?.steps_id == 3 ? 'bg-green' : 'bg-red';
   let colorPolitica = steps[3]?.steps_id == 4 ? 'bg-green' : 'bg-red';
+  let colorChequeo = steps[4]?.steps_id == 5 ? 'bg-green' : 'bg-red';
   return (
     <div>
       <div className="content-header">
@@ -159,7 +160,7 @@ export default function Inicio() {
                       &nbsp;&nbsp;
                       <b>PASO #4</b>
                     </div>
-                    <div className="card-body pt-0 bg-danger">
+                    <div className={"card-body pt-0 " + colorChequeo}>
                       <div className="row">
                         <p className="text-md">
                           <br />
@@ -169,12 +170,14 @@ export default function Inicio() {
                     </div>
                     <div className="card-footer">
                       <div className="text-right">
+                      { colorChequeo == "bg-red" &&
                         <a
-                            href="/registrarempresa"
+                            href="/steps/4"
                             className="btn btn-sm btn-primary"
                         >
                             <i className="fas fa-user" /> Ingresar
                         </a>
+                      }
                       </div>
                     </div>
                   </div>
@@ -197,10 +200,17 @@ export default function Inicio() {
                     <div className="card-footer">
                       <div className="text-right">
                         <a
-                            href="/registrarempresa"
+                            href="/steps/5"
                             className="btn btn-sm btn-primary"
                         >
-                            <i className="fas fa-user" /> Ingresar
+                            5.1
+                        </a>
+                        &nbsp;&nbsp;
+                        <a
+                            href="/steps/5"
+                            className="btn btn-sm btn-primary"
+                        >
+                            5.2
                         </a>
                       </div>
                     </div>

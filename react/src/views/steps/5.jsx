@@ -147,7 +147,7 @@ export default function Step5({ time_line }) {
                                                 <div className="col-sm-12">
                                                     <div className="form-group">
                                                         <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
-                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Conductores
+                                                            <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Colaboradores
                                                         </a>
                                                         <a href="/public/templates/5.1_inventario_conductores.csv" className="btn btn-app bg-secondary" style={{ height: 100 }}>
                                                             <i className="fa fa-book" /> Descargar plantilla<br />Guía Inventarios<br /> Contratistas
@@ -167,7 +167,7 @@ export default function Step5({ time_line }) {
                                             <div className="row">
                                                 <div className="col-sm-12">
                                                     <div className="form-group">
-                                                        <label>Cargar archivo Conductores</label>
+                                                        <label>Cargar archivo Colaboradores</label>
                                                         <div className="input-group">
                                                             <div className="custom-file">
                                                                 <input type="file" className="custom-file-input" onChange={(e) => setSelectedFile(e.target.files[0])} />
