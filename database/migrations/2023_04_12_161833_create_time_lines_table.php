@@ -15,10 +15,7 @@ class CreateTimeLinesTable extends Migration
     {
         Schema::create('time_lines', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('fecha_referencia');
-            $table->timestamp('fecha_finalizacion')->nullable();
             $table->unsignedTinyInteger('estado')->nullable();
-            $table->string('info_boton', 100)->nullable();
             $table->unsignedBigInteger('users_id')->index();
             $table->unsignedBigInteger('steps_id')->index();
 
